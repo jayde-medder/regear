@@ -1,0 +1,37 @@
+/* Sidebar.css */
+.sidebar {
+  max-height: 100vh;
+  width: 250px; /* Adjust the width as needed */
+  position: fixed;
+  top: 0;
+  right: -250px; /* Start offscreen to the right */
+  height: 100%;
+  background-color: #333;
+  overflow-x: hidden;
+  transition: 0.5s;
+  justify-content: space-around;
+}
+
+.sidebar.open {
+  right: 0; /* Slide in from the right when open */
+  /* Add styles for the open sidebar */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px 16px;
+  color: white;
+}
+
+li:hover {
+  background-color: #444;
+}
+
+.sidebar.vertical-space {
+  height:100vh;
+  margin-bottom: 20px; /* Adjust the margin to set the desired vertical spacing */
+}

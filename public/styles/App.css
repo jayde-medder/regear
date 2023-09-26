@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.App {
+  display: flex;
+  margin: -10px;
+  font-family: 'Inter', sans-serif;
+  /* Add styles for the main container */
+}
+
+.sidebar-open {
+  /* Add styles for when the sidebar is open */
+}

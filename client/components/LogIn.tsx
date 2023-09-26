@@ -1,3 +1,5 @@
+import '../../public/styles/LogIn.css'
+
 function LogIn() {
   return (
     <div className="log-in-wrapper">

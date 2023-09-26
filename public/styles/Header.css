@@ -1,0 +1,24 @@
+.header {
+  margin:0;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: space-between;
+  align-items:start;
+  padding: 10px; /* Add padding as needed */
+  background-color: #ffffff; /* Add background color as needed */
+  color: white; /* Add text color as needed */
+  transition: 0.5s;
+}
+
+.logo-container {
+  flex: 1; /* Make the logo container flexible to push the logo to the left */
+}
+
+#logo {
+  height:20vh; /* Set the desired height for the logo */
+  width: auto; /* Allow the width to adjust proportionally */
+  /* Add any additional styles for the logo image */
+}
+
+/* Add any additional styles for the MenuButton or other header content */

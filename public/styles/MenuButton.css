@@ -1,0 +1,21 @@
+/* MenuButton.css */
+.menu-button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 24px;
+  /* Add your styles for the closed menu button */
+}
+
+.menu-button.open {
+  /* Add styles for the open menu button */
+}
+
+.bar {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  /* Add styles for the bars in the menu button */
+}

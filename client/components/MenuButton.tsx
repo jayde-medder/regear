@@ -16,6 +16,7 @@ function MenuButton(props: MenuButtonProps) {
   return (
     <div
       className={`menu-button ${isOpen ? 'open' : ''}`}
+      onMouseEnter={handleClick}
       onClick={handleClick}
     >
       <img id="menu-icon" src="../../public/images/menu.svg" alt="Menu Icon" />

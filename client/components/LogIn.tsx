@@ -9,7 +9,7 @@ function LogIn() {
         target="_blank"
         rel="noreferrer"
       >
-        <button> Log In/Sign Up </button>
+        <button> Log In / Sign Up </button>
       </a>
     </div>
   )

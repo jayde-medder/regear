@@ -8,7 +8,7 @@ interface HeaderProps {
 
 function Header(props: HeaderProps) {
   const headerStyle = {
-    width: props.isSidebarOpen ? 'calc(100% - 270px)' : '100%',
+    width: props.isSidebarOpen ? 'calc(100% - 250px)' : '100%',
   }
   return (
     <div className="header" style={headerStyle}>

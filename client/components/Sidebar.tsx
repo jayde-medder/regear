@@ -8,13 +8,15 @@ interface SidebarProps {
 function Sidebar(props: SidebarProps) {
   return (
     <div className={`sidebar ${props.isOpen ? 'open' : ''}`}>
+      <LogIn />
       <ul>
-        <li>Menu Item 1</li>
-        <li>Menu Item 2</li>
+        <li>About Re:Gear</li>
+        <li>Gallery</li>
+        <li>Join the Online Community</li>
+        <li>FAQ's</li>
+        <li>Contact</li>
         {/* Add more menu items as needed */}
       </ul>
-      <div className="vertical-space"></div>
-      <LogIn />
     </div>
   )
 }

@@ -1,16 +1,22 @@
-import LogIn from './LogIn'
+import MenuButton from './MenuButton'
+import '../../public/styles/Header.css' // Import your CSS file
 
-function Header() {
+interface HeaderProps {
+  toggleSidebar: () => void
+  isSidebarOpen: boolean
+}
+
+function Header(props: HeaderProps) {
+  const headerStyle = {
+    width: props.isSidebarOpen ? 'calc(100% - 250px)' : '100%',
+  }
   return (
-    <div className="header">
-      {/* hold ref to public folder pref */}
-      <img
-        id="logo"
-        src="../../server/public/images/Logo.jpg"
-        alt="Re:Gear logo"
-      ></img>
-      <LogIn />
-      <div className="nav"></div>
+    <div className="header" style={headerStyle}>
+      <div className="logo-container">
+        <img id="logo" src="../../public/images/Logo.jpg" alt="Re:Gear Logo" />
+      </div>
+      <MenuButton toggleSidebar={props.toggleSidebar} />
+      {/* Additional header content can go here */}
     </div>
   )
 }

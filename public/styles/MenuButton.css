@@ -1,0 +1,12 @@
+.menu-button {
+  cursor: pointer;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 20px;
+  z-index: 950;
+}
+
+.menu-button.open {
+  /* Add styles for the open menu button */
+}

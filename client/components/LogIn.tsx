@@ -1,3 +1,5 @@
+import '../../public/styles/LogIn.css'
+
 function LogIn() {
   return (
     <div className="log-in-wrapper">
@@ -7,7 +9,7 @@ function LogIn() {
         target="_blank"
         rel="noreferrer"
       >
-        <button> Log In/Sign Up </button>
+        <button> Log In / Sign Up </button>
       </a>
     </div>
   )

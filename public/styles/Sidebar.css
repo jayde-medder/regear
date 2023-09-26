@@ -1,0 +1,31 @@
+.sidebar {
+  width: 250px; /* Adjust the width as needed */
+  position: fixed;
+  top: 0;
+  right: -250px; /* Start offscreen to the right */
+  height: 100%;
+  background-color: #333;
+  overflow-x: hidden;
+  transition: 0.5s;
+  justify-content: space-around;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  right: 0; /* Slide in from the right when open */
+  /* Add styles for the open sidebar */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px 25px;
+  color: white;
+}
+
+li:hover {
+  background-color: #444;
+}

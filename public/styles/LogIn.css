@@ -1,0 +1,18 @@
+.log-in-wrapper{
+  padding: 20px;
+}
+
+button{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color:#1d928a;
+  box-shadow: rgb(27, 27, 27) 0px 2px 5px -1px, rgb(27, 27, 27) 0px 1px 3px -1px;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover{
+  background-color:#1c867f;
+}

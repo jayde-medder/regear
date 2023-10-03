@@ -1,22 +1,11 @@
-import MenuButton from './MenuButton'
-import '../../public/styles/Header.css' // Import your CSS file
+import '../../public/styles/Header.css'
 
-interface HeaderProps {
-  toggleSidebar: () => void
-  isSidebarOpen: boolean
-}
-
-function Header(props: HeaderProps) {
-  const headerStyle = {
-    width: props.isSidebarOpen ? 'calc(100% - 250px)' : '100%',
-  }
+function Header() {
   return (
-    <div className="header" style={headerStyle}>
+    <div className="header">
       <div className="logo-container">
         <img id="logo" src="../../public/images/Logo.jpg" alt="Re:Gear Logo" />
       </div>
-      <MenuButton toggleSidebar={props.toggleSidebar} />
-      {/* Additional header content can go here */}
     </div>
   )
 }

@@ -12,9 +12,9 @@ function App() {
   }
 
   return (
-    <div className={`App ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-      <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
-      <Sidebar isOpen={isSidebarOpen} />
+    <div className="App">
+      <Header />
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <Home />
     </div>
   )

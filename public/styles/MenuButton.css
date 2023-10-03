@@ -4,9 +4,13 @@
   width: 40px;
   height: 40px;
   padding: 20px;
-  z-index: 950;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: 0.5s;
+
 }
 
 .menu-button.open {
-  /* Add styles for the open menu button */
+  right: 250px;
 }

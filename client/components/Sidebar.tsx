@@ -10,11 +10,46 @@ function Sidebar(props: SidebarProps) {
     <div className={`sidebar ${props.isOpen ? 'open' : ''}`}>
       <LogIn />
       <ul>
-        <li>About Re:Gear</li>
-        <li>Gallery</li>
-        <li>Join the Online Community</li>
-        <li>FAQ's</li>
-        <li>Contact</li>
+        <li>
+          <img
+            id="menu-svgs"
+            src="../../public/images/svg/about.svg"
+            alt="About Re:Gear Icon"
+          />
+          <div id="menu-listing">About Re:Gear</div>
+        </li>
+        <li>
+          <img
+            id="menu-svgs"
+            src="../../public/images/svg/gallery.svg"
+            alt="About Re:Gear Icon"
+          />
+          <div id="menu-listing">Gallery</div>
+        </li>
+        <li>
+          <img
+            id="menu-svgs"
+            src="../../public/images/svg/onlinecom.svg"
+            alt="About Re:Gear Icon"
+          />
+          <div id="menu-listing">Join the Online Community</div>
+        </li>
+        <li>
+          <img
+            id="menu-svgs"
+            src="../../public/images/svg/faq.svg"
+            alt="About Re:Gear Icon"
+          />
+          <div id="menu-listing">FAQ's</div>
+        </li>
+        <li>
+          <img
+            id="menu-svgs"
+            src="../../public/images/svg/contact.svg"
+            alt="About Re:Gear Icon"
+          />
+          <div id="menu-listing">Contact</div>
+        </li>
         {/* Add more menu items as needed */}
       </ul>
     </div>

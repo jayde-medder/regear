@@ -22,10 +22,20 @@ ul {
 }
 
 li {
-  padding: 8px 25px;
+  padding: 10px 20px;
   color: white;
 }
 
 li:hover {
   background-color: #444;
+}
+
+#menu-svgs{
+  position: absolute;
+  margin-top: 2px;
+  width:1em;
+}
+
+#menu-listing{
+  margin-left: 30px;
 }

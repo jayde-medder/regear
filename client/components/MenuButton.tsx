@@ -19,7 +19,11 @@ function MenuButton(props: MenuButtonProps) {
       onMouseEnter={handleClick}
       onClick={handleClick}
     >
-      <img id="menu-icon" src="../../public/images/menu.svg" alt="Menu Icon" />
+      <img
+        id="menu-icon"
+        src="../../public/images/svg/menu.svg"
+        alt="Menu Icon"
+      />
     </div>
   )
 }

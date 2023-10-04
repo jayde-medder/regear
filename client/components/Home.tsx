@@ -7,7 +7,7 @@ function Home() {
 
       <p>Our library is blah blah</p>
 
-      <h3>It's cool</h3>
+      <h3>It&apos;s cool</h3>
 
       <p>Bork</p>
     </div>

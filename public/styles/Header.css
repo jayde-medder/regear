@@ -2,13 +2,8 @@
   width: 100%;
   top: 0;
   position: sticky;
-  height: fit-content;
-  display: flex;
-  justify-content: space-between;
-  align-items:start;
-  padding: 0px;
   background-color: #ffffff;
-  color: white;
+  color: black;
   transition: 0.5s;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }

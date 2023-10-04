@@ -15,17 +15,17 @@
   right: 0;
 }
 
-ul {
+.sidebar ul {
   list-style-type: none;
   padding: 0;
 }
 
-li {
+.sidebar li {
   padding: 10px 20px;
   color: white;
 }
 
-li:hover {
+.sidebar li:hover {
   background-color: #444;
 }
 

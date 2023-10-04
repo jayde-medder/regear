@@ -24,8 +24,22 @@ export default function Marquee() {
             </span>
           </div>
           <div className="marquee-item">
+            <span className="img-wrapper">
+              <img
+                id="img"
+                src="../../public/images/svg/onlinecom.svg"
+                alt="About Re:Gear Icon"
+              />
+            </span>
             <span className="item-text">
               40 ITEMS AVAILABLE IN OUR HARDWARE LIBRARY
+            </span>
+            <span className="img-wrapper">
+              <img
+                id="img"
+                src="../../public/images/svg/onlinecom.svg"
+                alt="About Re:Gear Icon"
+              />
             </span>
           </div>
         </div>
@@ -48,8 +62,22 @@ export default function Marquee() {
             </span>
           </div>
           <div className="marquee-item">
+            <span className="img-wrapper">
+              <img
+                id="img"
+                src="../../public/images/svg/onlinecom.svg"
+                alt="About Re:Gear Icon"
+              />
+            </span>
             <span className="item-text">
               40 ITEMS AVAILABLE IN OUR HARDWARE LIBRARY
+            </span>
+            <span className="img-wrapper">
+              <img
+                id="img"
+                src="../../public/images/svg/onlinecom.svg"
+                alt="About Re:Gear Icon"
+              />
             </span>
           </div>
         </div>

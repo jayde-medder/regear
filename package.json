@@ -28,6 +28,8 @@
     ]
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.36.1",
+    "@tanstack/react-query-devtools": "^4.36.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "knex": "^3.0.1"

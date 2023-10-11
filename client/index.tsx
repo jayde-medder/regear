@@ -1,7 +1,9 @@
 import { createRoot } from 'react-dom/client'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import App from './components/App.tsx'
+import { routes } from './routes'
 
-document.addEventListener('DOMContentLoaded', () => {
-  createRoot(document.getElementById('app') as HTMLElement).render(<App />)
-})
+const router = createBrowserRouter(routes)
+
+const root = createRoot(document.getElementById('app') as HTMLElement)
+root.render(<RouterProvider router={router} />)

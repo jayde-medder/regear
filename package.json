@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "knex": "^3.0.1"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
@@ -54,6 +55,7 @@
     "prettier": "2.6.1",
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "superagent": "7.1.1",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",

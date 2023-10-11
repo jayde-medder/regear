@@ -44,7 +44,7 @@ function Sidebar(props: SidebarProps) {
               src="../../public/images/svg/faq.svg"
               alt="About Re:Gear Icon"
             />
-            <div id="menu-listing">FAQ's</div>
+            <div id="menu-listing">FAQ&apos;s</div>
           </li>
           <li>
             <img

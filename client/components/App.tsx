@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from './Header.tsx'
 import Sidebar from './Sidebar.tsx'
 import Home from './Home.tsx'
+import Marquee from './Marquee.tsx'
 import '../../public/styles/App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Marquee />
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <Home />
     </div>

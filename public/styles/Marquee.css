@@ -1,0 +1,48 @@
+.marquee {
+  --gap: 1rem;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  background-color: #1d928ace;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  color: white;
+  font-size: 18px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.marquee-content {
+  list-style-type: none;
+  align-items: center;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: var(--gap);
+  animation: scroll 20s linear infinite;
+}
+
+.marquee-item{
+  display: flex;
+  align-items: center;
+}
+
+.marquee-item .img-wrapper{
+  margin-top: 5px;
+  padding: 3px 10px;
+}
+
+.marquee-item img{
+  height:25px;
+  padding: 0px 0px 0 0px;
+}
+
+@keyframes scroll{
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}

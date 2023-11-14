@@ -1,20 +1,27 @@
 import styles from './Sidebar.module.css'
 import LogIn from '../LogIn/LogIn.tsx'
-import MenuButton from '../MenuButton/MenuButton.tsx'
+import { useState } from 'react'
 
-interface SidebarProps {
-  isOpen: boolean
-  toggleSidebar: () => void
-}
+function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false)
 
-function Sidebar(props: SidebarProps) {
+  const handleHover = () => {
+    setIsOpen(!isOpen)
+  }
   return (
-    <div className={styles['side-menu']}>
-      <MenuButton isOpen={props.isOpen} toggleSidebar={props.toggleSidebar} />
-      <div
-        className={`${styles.sidebar} ${props.isOpen ? styles.open : ''}`}
-        onMouseLeave={props.toggleSidebar}
-      >
+    <div
+      className={styles['side-menu']}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHover}
+    >
+      <div className={`${styles['menu-button']} ${isOpen ? styles.open : ''}`}>
+        <img
+          id={styles['menu-icon']}
+          src="/images/svg/menu.svg"
+          alt="Menu Icon"
+        />
+      </div>
+      <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
         <div className={styles['sidebar-content']}>
           <LogIn />
           <ul>

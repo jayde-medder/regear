@@ -15,6 +15,7 @@
     "build:client": "vite build",
     "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
     "test": "vitest",
+    "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
@@ -28,8 +29,12 @@
     ]
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.36.1",
+    "@tanstack/react-query-devtools": "^4.36.1",
     "cors": "^2.8.5",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "sqlite3": "^5.1.6",
+    "knex": "^3.0.1"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.9.1",
@@ -54,6 +59,7 @@
     "prettier": "2.6.1",
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "superagent": "7.1.1",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",

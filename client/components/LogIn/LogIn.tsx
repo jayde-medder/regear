@@ -1,15 +1,15 @@
-import '../../public/styles/LogIn.css'
+import styles from './LogIn.module.css'
 
 function LogIn() {
   return (
-    <div className="log-in-wrapper">
+    <div className={styles['log-in-wrapper']}>
       <a
-        id="log-in-button"
+        id={styles['log-in-button']}
         href="https://react.school"
         target="_blank"
         rel="noreferrer"
       >
-        <button> Log In / Sign Up </button>
+        <button>LOG-IN/SIGN-UP</button>
       </a>
     </div>
   )

@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import '../../public/styles/MenuButton.css'
+import styles from './MenuButton.module.css'
 
 interface MenuButtonProps {
+  isOpen: boolean
   toggleSidebar: () => void
 }
 
@@ -15,13 +16,13 @@ function MenuButton(props: MenuButtonProps) {
 
   return (
     <div
-      className={`menu-button ${isOpen ? 'open' : ''}`}
+      className={`${styles['menu-button']} ${isOpen ? styles.open : ''}`}
       onMouseEnter={handleClick}
       onClick={handleClick}
     >
       <img
-        id="menu-icon"
-        src="../../public/images/svg/menu.svg"
+        id={styles['menu-icon']}
+        src="/images/svg/menu.svg"
         alt="Menu Icon"
       />
     </div>

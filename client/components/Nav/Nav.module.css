@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  top: 0;
+  position: sticky;
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  color: black;
+  transition: 0.5s;
+  z-index: 9;
+}
+
+.logo-container {
+  flex: 1;
+  padding: 15px;
+  
+}
+
+#logo {
+  height:100px;
+  width: auto;
+}

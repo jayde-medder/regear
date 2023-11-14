@@ -5,11 +5,15 @@
   overflow: hidden;
   user-select: none;
   gap: var(--gap);
-  background-color: #1d928ace;
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
-  color: white;
+  background-color: #ffffff;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  color: rgb(0, 0, 0);
   font-size: 18px;
   font-family: 'IBM Plex Mono', monospace;
+  font-weight: 300;
+  height: 30px;
+  z-index: 5;
 }
 
 .marquee-content {

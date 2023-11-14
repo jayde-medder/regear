@@ -1,0 +1,21 @@
+.home{
+  width:100%;
+}
+
+#header1{
+  margin: 0;
+  font-size: 150px;
+}
+
+#header2{
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 200;
+  font-size: 42px;
+  margin-top: -50px;
+}
+
+.header{
+  margin:20px;
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+}

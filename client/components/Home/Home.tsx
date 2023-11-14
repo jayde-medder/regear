@@ -1,6 +1,6 @@
-import '../../public/styles/Home.css'
+import styles from './Home.module.css'
 import { useQuery } from '@tanstack/react-query'
-import { getAllPosts } from '../apis/apiClient'
+import { getAllPosts } from '../../apis/apiClient'
 
 function Home() {
   const { data: posts, isLoading, isError } = useQuery(['posts'], getAllPosts)
@@ -18,8 +18,12 @@ function Home() {
   }
 
   return (
-    <div className="home">
-      <div>
+    <div className={styles.home}>
+      <div className={styles['header']}>
+        <h1>re:Gear</h1>
+        <h2>Hardware Library</h2>
+      </div>
+      <div className={styles.blog}>
         <ul>
           {posts.map((post) => (
             <li key={post.id}>

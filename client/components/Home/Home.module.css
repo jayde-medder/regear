@@ -1,0 +1,24 @@
+.home{
+  margin:20px;
+}
+
+.home h1{
+  margin: 0;
+  font-size: 150px;
+}
+
+.home h2{
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 200;
+  font-size: 42px;
+  margin-top: -50px;
+}
+
+.header{
+  margin-top: 20vh;
+}
+
+.blog{
+  height: fit-content;
+  padding: 30px 100px;
+}

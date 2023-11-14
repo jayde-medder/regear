@@ -1,15 +1,35 @@
 import '../../public/styles/Home.css'
+import { useQuery } from '@tanstack/react-query'
+import { getAllPosts } from '../apis/apiClient'
 
 function Home() {
+  const { data: posts, isLoading, isError } = useQuery(['posts'], getAllPosts)
+
+  if (isError) {
+    return (
+      <>
+        <p>Error retrieving data!</p>
+      </>
+    )
+  }
+
+  if (!posts || isLoading) {
+    return <p>...Loading...</p>
+  }
+
   return (
     <div className="home">
-      <h1>Sign Up to Partake!</h1>
-
-      <p>Our library is blah blah</p>
-
-      <h3>It&apos;s cool</h3>
-
-      <p>Bork</p>
+      <div>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>
+              <p>{post.title}</p>
+              <p>{post.date.toString()}</p>
+              <p>{post.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

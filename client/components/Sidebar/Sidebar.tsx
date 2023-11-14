@@ -10,8 +10,11 @@ interface SidebarProps {
 function Sidebar(props: SidebarProps) {
   return (
     <div className={styles['side-menu']}>
-      <MenuButton toggleSidebar={props.toggleSidebar} />
-      <div className={`${styles.sidebar} ${props.isOpen ? styles.open : ''}`}>
+      <MenuButton isOpen={props.isOpen} toggleSidebar={props.toggleSidebar} />
+      <div
+        className={`${styles.sidebar} ${props.isOpen ? styles.open : ''}`}
+        onMouseLeave={props.toggleSidebar}
+      >
         <div className={styles['sidebar-content']}>
           <LogIn />
           <ul>

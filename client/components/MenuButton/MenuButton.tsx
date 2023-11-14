@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './MenuButton.module.css'
 
 interface MenuButtonProps {
+  isOpen: boolean
   toggleSidebar: () => void
 }
 

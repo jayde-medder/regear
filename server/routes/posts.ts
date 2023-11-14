@@ -1,23 +1,56 @@
-import request from 'superagent'
-import express from 'express'
+import { Router } from 'express'
+import * as db from '../db/posts'
 
-import * as db from '../db/connection.ts'
+const router = Router()
 
-const router = express.Router()
+router.get('/', async (req, res) => {
+  try {
+    const posts = await db.getAllPosts()
+    res.json({ posts })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Cannot get posts' })
+  }
+})
 
-router.get('/', async(req, res) => {
-  const posts = await db.getPosts()
-  res.render
-}
+router.get('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const post = await db.getPostById(id)
+    res.json({ post })
+  } catch (error) {
+    res.status(500).json({ message: 'Cannot get post' })
+  }
+})
 
-// * For testing only - to display all data from restaurants table
-// router.get('/', async (req, res) => {
-//   try {
-//     const restaurants = await db.getRestaurants()
-//     res.render('restaurant', { restaurants: restaurants })
-//   } catch (err) {
-//     res.status(500).send('DATABASE ERROR: ' + err.message)
-//   }
-// })
+router.patch('/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id)
+    const updatedData = req.body
+    const updatedPost = await db.updatePost(id, updatedData)
+    res.json(updatedPost[0])
+  } catch (error) {
+    res.status(500).json({ message: 'Cannot get update' })
+  }
+})
 
+router.delete('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    db.deletePost(id)
+    res.sendStatus(200)
+  } catch (err) {
+    res.status(500).send('Could not delete post')
+  }
+})
+
+router.post('/', async (req, res) => {
+  const { ...newPost } = req.body
+  try {
+    const post = await db.addPost(newPost)
+    res.status(200).json({ post })
+  } catch (err) {
+    res.status(500).send('Could not add new post')
+  }
+})
 export default router

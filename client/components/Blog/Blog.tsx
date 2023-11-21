@@ -24,7 +24,7 @@ function Blog() {
       {posts.map((post, index) => (
         <React.Fragment key={post.id}>
           <BlogPost key={post.id} post={post} />
-          {index !== posts.length - 1 && <hr className={styles.hr} />}
+          {index !== posts.length - 1 && <hr className={styles['blog-hr']} />}
         </React.Fragment>
       ))}
     </div>

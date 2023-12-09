@@ -1,13 +1,73 @@
 /**
  * @param { import("knex").Knex } knex
- * @returns { Promise<void> } 
+ * @returns { Promise<void> }
  */
-exports.seed = async function(knex) {
-  // Deletes ALL existing entries
-  await knex('table_name').del()
-  await knex('table_name').insert([
-    {id: 1, colName: 'rowValue1'},
-    {id: 2, colName: 'rowValue2'},
-    {id: 3, colName: 'rowValue3'}
-  ]);
-};
+export async function seed(knex) {
+  await knex('items').insert([
+    {
+      id: 1,
+      item_name: 'Digital Mixer MX-500',
+      description:
+        'Professional 16-channel digital mixer with built-in effects',
+      category_id: 1,
+      quantity: 1,
+      weight: 3,
+      location: 'Shelf 1',
+      owner_id: 1,
+      has_fault: false,
+      item_fault: null,
+      action_required: null,
+      fixed_by_RG: false,
+      date_fixed: null,
+      certification_needed: false,
+      cert_expiry_date: null,
+      RG_inventory: true,
+      fixer_id: null,
+      logbook: 'Regular maintenance performed.',
+      checked_out: false,
+    },
+    {
+      id: 2,
+      item_name: 'Electronic Drum Kit E-5000',
+      description: 'High-quality electronic drum kit with mesh heads',
+      category_id: 1,
+      quantity: 1,
+      weight: 10.0,
+      location: 'Shelf 2',
+      owner_id: 2,
+      has_fault: true,
+      item_fault: 'Faulty drum pad',
+      action_required: 'Replace drum pad',
+      fixed_by_RG: false,
+      date_fixed: null,
+      certification_needed: false,
+      cert_expiry_date: null,
+      RG_inventory: true,
+      fixer_id: null,
+      logbook: 'Fault reported by user; action pending.',
+      checked_out: false,
+    },
+    {
+      id: 3,
+      item_name: 'Studio Headphones HD-200',
+      description:
+        'Closed-back studio headphones with accurate sound reproduction',
+      category_id: 1,
+      quantity: 1,
+      weight: 0.2,
+      location: 'Shelf 3',
+      owner_id: 2,
+      has_fault: false,
+      item_fault: null,
+      action_required: null,
+      fixed_by_RG: false,
+      date_fixed: null,
+      certification_needed: true,
+      cert_expiry_date: '2024-1-28',
+      RG_inventory: true,
+      fixer_id: null,
+      logbook: 'Certification required for annual maintenance.',
+      checked_out: false,
+    },
+  ])
+}

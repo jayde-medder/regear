@@ -3,10 +3,12 @@
  * @returns { Promise<void> }
  */
 export async function seed(knex) {
-  // Deletes ALL existing entries in all tables
-  await knex('posts').del()
-  await knex('users').del()
+  // Deletes ALL existing entries in ALL tables
+  await knex('contributions').del()
+  await knex('loans').del()
+  await knex('requests').del()
+  await knex('categories').del()
   await knex('items').del()
   await knex('users').del()
-  await knex('request').del()
+  await knex('posts').del()
 }

@@ -9,7 +9,6 @@ export function up(knex) {
     table.integer('phone')
     table.string('email').notNullable().unique()
     table.string('best_contact')
-    table.string('contribution_flags')
   })
 }
 

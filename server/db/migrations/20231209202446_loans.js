@@ -3,12 +3,12 @@
  * @returns { Promise<void> }
  */
 export function up(knex) {
-  return knex.schema.createTable('request', (table) => {
-    table.string('id').primary()
-    table.date('date')
+  return knex.schema.createTable('loans', (table) => {
     table.integer('item_id').references('items.id')
-    table.string('message')
-    table.string('type')
+    table.integer('user_id').references('users.id')
+    table.date('date_out')
+    table.date('date_in')
+    table.integer('request_id').references('requests.id')
   })
 }
 
@@ -17,5 +17,5 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.dropTable('request')
+  return knex.schema.dropTable('loans')
 }

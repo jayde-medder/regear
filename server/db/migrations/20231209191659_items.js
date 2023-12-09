@@ -22,6 +22,7 @@ export function up(knex) {
     table.boolean('RG_inventory')
     table.integer('fixer_id').references('users.id')
     table.string('logbook')
+    table.boolean('checked_out')
   })
 }
 

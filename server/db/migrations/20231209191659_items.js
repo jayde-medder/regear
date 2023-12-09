@@ -9,7 +9,7 @@ export function up(knex) {
     table.string('description')
     table.integer('category_id').references('categories.id')
     table.integer('quantity')
-    table.float('weight')
+    table.integer('weight')
     table.string('location')
     table.integer('owner_id').references('users.id')
     table.boolean('has_fault')

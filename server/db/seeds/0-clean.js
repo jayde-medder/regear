@@ -7,8 +7,8 @@ export async function seed(knex) {
   await knex('contributions').del()
   await knex('loans').del()
   await knex('requests').del()
-  await knex('categories').del()
   await knex('items').del()
+  await knex('categories').del()
   await knex('users').del()
   await knex('posts').del()
 }

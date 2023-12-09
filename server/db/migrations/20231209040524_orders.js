@@ -7,7 +7,7 @@ export function up(knex) {
     table.increments('id').primary()
     table.integer('user_id').references('users.id')
     table.varchar('status')
-    table.varchar('created_at')
+    table.date('created_at')
   })
 }
 

@@ -8,7 +8,7 @@ export function up(knex) {
     table.varchar('merchant_name')
     table.integer('admin_id').references('users.id')
     table.integer('country_code').references('countries.code')
-    table.varchar('created_at')
+    table.date('created_at')
   })
 }
 

@@ -8,9 +8,9 @@ export function up(knex) {
     table.varchar('full_name')
     table.varchar('email')
     table.varchar('gender')
-    table.varchar('date_of_birth')
+    table.date('date_of_birth')
     table.integer('country_code').references('countries.code')
-    table.varchar('created_at')
+    table.date('created_at')
   })
 }
 

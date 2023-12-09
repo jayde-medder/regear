@@ -9,7 +9,7 @@ export function up(knex) {
     table.varchar('name')
     table.integer('price')
     table.varchar('status')
-    table.varchar('created_at')
+    table.date('created_at')
   })
 }
 

@@ -1,6 +1,7 @@
 import styles from './Sidebar.module.css'
 import LogIn from '../LogIn/LogIn.tsx'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -33,6 +34,16 @@ function Sidebar() {
               />
               <div id={styles['menu-listing']}>ABOUT RE:GEAR</div>
             </li>
+            <Link to={'/inventory'}>
+              <li>
+                <img
+                  id={styles['menu-svgs']}
+                  src="/images/svg/gallery.svg"
+                  alt="About Re:Gear Icon"
+                />
+                <div id={styles['menu-listing']}>INVENTORY</div>
+              </li>
+            </Link>
             <li>
               <img
                 id={styles['menu-svgs']}

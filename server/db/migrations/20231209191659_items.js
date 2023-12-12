@@ -23,6 +23,7 @@ export function up(knex) {
     table.integer('fixer_id').references('users.id')
     table.string('logbook')
     table.boolean('checked_out')
+    table.string('image_src')
   })
 }
 

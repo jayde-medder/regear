@@ -20,6 +20,7 @@ export async function seed(knex) {
       RG_inventory: true,
       logbook: 'Regular maintenance performed.',
       checked_out: false,
+      image_src: '/images/mx-500',
     },
     {
       id: 2,
@@ -37,6 +38,7 @@ export async function seed(knex) {
       RG_inventory: true,
       logbook: 'Fault reported by user; action pending.',
       checked_out: false,
+      image_src: '/images/E-5000',
     },
     {
       id: 3,
@@ -55,6 +57,7 @@ export async function seed(knex) {
       RG_inventory: true,
       logbook: 'Certification required for annual maintenance.',
       checked_out: false,
+      image_src: '/images/HD-200',
     },
   ])
 }

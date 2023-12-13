@@ -45,7 +45,7 @@ export async function seed(knex) {
       item_name: 'Studio Headphones HD-200',
       description:
         'Closed-back studio headphones with accurate sound reproduction',
-      category_id: 1,
+      category_id: 2,
       // quantity: 1,
       weight: 0.2,
       location: 'Shelf 3',

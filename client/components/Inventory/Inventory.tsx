@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import styles from './Inventory.module.css'
+import { getInventoryList } from '../../apis/apiInventory'
 
 function Inventory() {
   const {
     data: inventory,
     isLoading,
     isError,
-  } = useQuery(['inventory'], () => getInventory())
+  } = useQuery(['inventory'], () => getInventoryList())
   if (isError)
     return (
       <>
@@ -20,7 +21,7 @@ function Inventory() {
     return (
       <>
         {/* add loading animation */}
-        <h2>...Loading </h2>
+        <h2>...Loading... </h2>
       </>
     )
   return (

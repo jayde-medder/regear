@@ -8,7 +8,7 @@ export async function getAllInventoryList(): Promise<ItemList[]> {
     .join('categories', 'items.category_id', 'categories.id')
     .select(
       'items.id',
-      'items.name',
+      'items.item_name as name',
       'items.has_fault',
       'items.checked_out',
       'items.image_src',

@@ -27,6 +27,11 @@ function Inventory() {
   return (
     <div>
       <h1>Inventory</h1>
+      {inventory.map((item) => (
+        <>
+          <h2>{item.name}</h2>
+        </>
+      ))}
     </div>
   )
 }

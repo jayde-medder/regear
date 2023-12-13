@@ -1,7 +1,7 @@
 import styles from './Blog.module.css'
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getAllPosts } from '../../apis/apiClient'
+import { getAllPosts } from '../../apis/apiPosts'
 import BlogPost from './BlogPost'
 
 function Blog() {

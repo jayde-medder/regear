@@ -27,42 +27,51 @@ function Inventory() {
       </>
     )
 
+  //Maps items into categories, so that they can be displayed by category if desired. Might need to alter the approach for conditional rendering of a subset of categories, but should work I hope.
   const organizeData = (inventory: ItemList[]) => {
     const categoriesMap = new Map()
 
-    // Group items by category_id
-    inventory.forEach((item) => {
-      const category = categoriesMap.get(item.category_id) || {
-        id: item.category_id,
-        name: `${item.category_name}`,
-        items: [],
-        subcategories: [],
+    const processCategory = (
+      item: ItemList,
+      parentCategory: {
+        subcategories: {
+          id: number
+          name: string
+          items: ItemList[]
+          subcategories: never[]
+        }[]
       }
+    ) => {
+      const category = parentCategory.subcategories.find(
+        (sub) => sub.id === item.category_id
+      )
 
+      if (category) {
+        category.items.push(item)
+      } else {
+        parentCategory.subcategories.push({
+          id: item.category_id,
+          name: `${item.category_name}`,
+          items: [item],
+          subcategories: [],
+        })
+      }
+    }
+
+    inventory.forEach((item) => {
       if (item.parent_id) {
         const parentCategory = categoriesMap.get(item.parent_id) || {
           subcategories: [],
         }
-
-        const subcategory = parentCategory.subcategories.find(
-          (sub: { id: number }) => sub.id === category.id
-        )
-
-        if (subcategory) {
-          // If subcategory already exists, push the item to its items array
-          subcategory.items.push(item)
-        } else {
-          // If subcategory doesn't exist, create a new one
-          parentCategory.subcategories.push({
-            id: category.id,
-            name: category.name,
-            items: [item], // Create a new items array with the current item
-            subcategories: [],
-          })
-        }
-
+        processCategory(item, parentCategory)
         categoriesMap.set(item.parent_id, parentCategory)
       } else {
+        const category = categoriesMap.get(item.category_id) || {
+          id: item.category_id,
+          name: `${item.category_name}`,
+          items: [],
+          subcategories: [],
+        }
         category.items.push(item)
         categoriesMap.set(item.category_id, category)
       }

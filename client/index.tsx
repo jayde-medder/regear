@@ -9,12 +9,13 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter(routes)
+
 const root = createRoot(document.getElementById('app') as HTMLElement)
 root.render(
   <Auth0Provider
     domain="pikopiko-jayde.au.auth0.com"
     clientId="CvIqMSmBI4jZFlKDhH2lcW20eyZr3kNe"
-    redirectUri={window.location.origin}
+    authorizationParams={{ redirect_uri: window.location.origin }}
     audience="https://regear/api"
   >
     <QueryClientProvider client={queryClient}>

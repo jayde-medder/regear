@@ -8,35 +8,20 @@ import {
 function LogIn() {
   const { user, logout, loginWithRedirect } = useAuth0()
 
-  const handleSignOut = () => {
-    return logout()
-  }
-
-  const handleSignIn = () => {
-    return loginWithRedirect()
-  }
-
   return (
     <div className={styles['log-in-wrapper']}>
       <IfAuthenticated>
-        <a
-          id={styles['log-in-button']}
-          href="https://react.school"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button>LOG-IN/SIGN-UP</button>
-        </a>
+        <button id={styles['log-in-button']} onClick={() => logout()}>
+          LOG OUT
+        </button>
       </IfAuthenticated>
       <IfNotAuthenticated>
-        <a
+        <button
           id={styles['log-in-button']}
-          href="https://react.school"
-          target="_blank"
-          rel="noreferrer"
+          onClick={() => loginWithRedirect()}
         >
-          <button>LOG-IN/SIGN-UP</button>
-        </a>
+          LOG-IN/SIGN-UP
+        </button>
       </IfNotAuthenticated>
     </div>
   )

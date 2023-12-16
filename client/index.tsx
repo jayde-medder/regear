@@ -15,7 +15,7 @@ root.render(
   <Auth0Provider
     domain="pikopiko-jayde.au.auth0.com"
     clientId="CvIqMSmBI4jZFlKDhH2lcW20eyZr3kNe"
-    authorizationParams={{ redirect_uri: window.location.origin }}
+    redirectUri={window.location.origin}
     audience="https://regear/api"
   >
     <QueryClientProvider client={queryClient}>

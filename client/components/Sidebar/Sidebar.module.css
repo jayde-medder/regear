@@ -20,21 +20,23 @@
   width: 300px;
   position: fixed;
   top: 0;
-  right: -321px;
+  right: -322px;
   height: 100%;
-  background-color: #ffffff;
-  color: #444;
   overflow-x: hidden;
   transition: 0.5s;
   justify-content: space-around;
-  margin: 20px;
+  padding: 20px;
   z-index: 10;
-  border-radius: 5px;
-  border: 1px solid black;
 }
 
 .sidebar-content {
+  border: 1px solid black;
+  background-color: #ffffff;
+  color: #444;
   padding: 15px;
+  border-radius: 5px;
+  height: calc(100% - 40px);
+  overflow-y: hidden;
 }
 
 .sidebar.open {

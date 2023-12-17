@@ -1,16 +1,28 @@
 import styles from './LogIn.module.css'
+import { useAuth0 } from '@auth0/auth0-react'
+import {
+  IfAuthenticated,
+  IfNotAuthenticated,
+} from '../Authenticated/Authenticated'
 
 function LogIn() {
+  const { user, logout, loginWithRedirect } = useAuth0()
+
   return (
     <div className={styles['log-in-wrapper']}>
-      <a
-        id={styles['log-in-button']}
-        href="https://react.school"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <button>LOG-IN/SIGN-UP</button>
-      </a>
+      <IfAuthenticated>
+        <button id={styles['log-in-button']} onClick={() => logout()}>
+          LOG OUT
+        </button>
+      </IfAuthenticated>
+      <IfNotAuthenticated>
+        <button
+          id={styles['log-in-button']}
+          onClick={() => loginWithRedirect()}
+        >
+          LOG-IN/SIGN-UP
+        </button>
+      </IfNotAuthenticated>
     </div>
   )
 }

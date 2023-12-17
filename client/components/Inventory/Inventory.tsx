@@ -93,7 +93,6 @@ function Inventory() {
       {category.items.map((item) => (
         <div key={item.id}>
           <p>{item.name}</p>
-          {/* Add more item details as needed */}
         </div>
       ))}
       {/* Render items for subcategories */}

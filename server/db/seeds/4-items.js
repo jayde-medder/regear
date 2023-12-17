@@ -10,6 +10,7 @@ export async function seed(knex) {
       description:
         'Professional 16-channel digital mixer with built-in effects',
       category_id: 1,
+      date_added: '2023-10-05',
       // quantity: 1,
       weight: 3,
       location: 'Shelf 1',
@@ -28,6 +29,7 @@ export async function seed(knex) {
       description: 'High-quality electronic drum kit with mesh heads',
       category_id: 1,
       // quantity: 1,
+      date_added: '2023-09-05',
       weight: 10.0,
       location: 'Shelf 2',
       owner_id: 2,
@@ -46,6 +48,7 @@ export async function seed(knex) {
       description:
         'Closed-back studio headphones with accurate sound reproduction',
       category_id: 2,
+      date_added: '2023-01-05',
       // quantity: 1,
       weight: 0.2,
       location: 'Shelf 3',

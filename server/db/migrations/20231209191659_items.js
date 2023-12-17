@@ -8,7 +8,7 @@ export function up(knex) {
     table.string('item_name')
     table.string('description')
     table.integer('category_id').references('categories.id')
-    table.integer('quantity')
+    // table.integer('quantity') removing for now as it makes it hard to track individual items. Can track duplicates in front end
     table.integer('weight')
     table.string('location')
     table.integer('owner_id').references('users.id')
@@ -23,6 +23,7 @@ export function up(knex) {
     table.integer('fixer_id').references('users.id')
     table.string('logbook')
     table.boolean('checked_out')
+    table.string('image_src')
   })
 }
 

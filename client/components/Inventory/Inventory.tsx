@@ -2,6 +2,8 @@ import { useQuery } from '@tanstack/react-query'
 import styles from './Inventory.module.css'
 import { getInventoryList } from '../../apis/apiInventory'
 import { ItemList } from '../../../models/inventory'
+import { useState } from 'react'
+import ItemOrder from '../ItemOrder/ItemOrder'
 
 function Inventory() {
   const {
@@ -9,6 +11,13 @@ function Inventory() {
     isLoading,
     isError,
   } = useQuery(['inventory'], () => getInventoryList())
+
+  const [itemOrder, setItemOrder] = useState<string>('A-Z')
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setItemOrder(event.target.value)
+    console.log(`Item order ${itemOrder}`)
+  }
 
   if (isError)
     return (
@@ -112,7 +121,15 @@ function Inventory() {
     </div>
   )
 
-  return <div>{organizeData(inventory).map(renderCategory)}</div>
+  return (
+    <>
+      <ItemOrder
+        itemOrder={itemOrder}
+        handleSelectChange={handleSelectChange}
+      />
+      <div>{organizeData(inventory).map(renderCategory)}</div>
+    </>
+  )
 }
 
 export default Inventory

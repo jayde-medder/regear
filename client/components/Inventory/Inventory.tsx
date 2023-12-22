@@ -7,6 +7,7 @@ import ItemOrder from '../ItemOrder/ItemDisplayForm'
 import CategoryDisplay from '../CategoryDisplay/CategoryDisplay'
 import AlphabeticalDisplay from '../AlphabeticalDisplay/AlphabeticalDisplay'
 import DateAddedDisplay from '../DateAddedDisplay/DateAddedDisplay'
+import ItemSearchBar from '../ItemSearchBar/ItemSearchBar'
 
 function Inventory() {
   const {
@@ -16,6 +17,7 @@ function Inventory() {
   } = useQuery(['inventory'], () => getInventoryList())
 
   const [itemOrder, setItemOrder] = useState<string>('A-Z')
+  const [searchText, setSearchText] = useState<string>('')
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemOrder(event.target.value)
@@ -39,11 +41,20 @@ function Inventory() {
       </>
     )
 
+  function handleSubmit(): (e: React.FormEvent<HTMLFormElement>) => void {
+    throw new Error('Function not implemented.')
+  }
+
   return (
     <>
       <ItemOrder
         itemOrder={itemOrder}
         handleSelectChange={handleSelectChange}
+      />
+      <ItemSearchBar
+        searchText={searchText}
+        setSearchText={setSearchText}
+        handleSubmit={handleSubmit}
       />
       {itemOrder === 'A-Z' && <AlphabeticalDisplay inventory={inventory} />}
       {itemOrder === 'Date added' && <DateAddedDisplay inventory={inventory} />}

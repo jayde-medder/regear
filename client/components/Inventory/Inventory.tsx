@@ -22,12 +22,12 @@ function Inventory() {
   const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
     []
   )
-  console.log(`filterInventory ${filteredInventory}`)
+
+  // sets the order of the item list
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemOrder(event.target.value)
-    console.log(`Item order ${itemOrder}`)
   }
-
+  //modifies the inventory based on the searchbar input
   useEffect(() => {
     if (searchText !== '' && inventory) {
       const filteredItems = inventory.filter((item) =>

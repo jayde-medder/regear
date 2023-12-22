@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import styles from './Inventory.module.css'
 import { getInventoryList } from '../../apis/apiInventory'
 import { ItemList } from '../../../models/inventory'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ItemOrder from '../ItemOrder/ItemDisplayForm'
 import CategoryDisplay from '../CategoryDisplay/CategoryDisplay'
 import AlphabeticalDisplay from '../AlphabeticalDisplay/AlphabeticalDisplay'
@@ -17,12 +17,33 @@ function Inventory() {
   } = useQuery(['inventory'], () => getInventoryList())
 
   const [itemOrder, setItemOrder] = useState<string>('A-Z')
-  const [searchText, setSearchText] = useState<string>('')
 
+  const [searchText, setSearchText] = useState<string>('')
+  const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
+    []
+  )
+  console.log(`filterInventory ${filteredInventory}`)
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemOrder(event.target.value)
     console.log(`Item order ${itemOrder}`)
   }
+
+  useEffect(() => {
+    if (searchText !== '' && inventory) {
+      const filteredItems = inventory.filter((item) =>
+        Object.values(item).some(
+          (value) =>
+            value &&
+            typeof value === 'string' &&
+            value.toLowerCase().includes(searchText.toLowerCase())
+        )
+      )
+
+      setFilteredInventory(filteredItems)
+    } else {
+      setFilteredInventory(inventory)
+    }
+  }, [searchText, inventory])
 
   if (isError)
     return (
@@ -56,9 +77,16 @@ function Inventory() {
         setSearchText={setSearchText}
         handleSubmit={handleSubmit}
       />
-      {itemOrder === 'A-Z' && <AlphabeticalDisplay inventory={inventory} />}
-      {itemOrder === 'Date added' && <DateAddedDisplay inventory={inventory} />}
-      {itemOrder === 'Category' && <CategoryDisplay inventory={inventory} />}
+
+      {filteredInventory && itemOrder === 'A-Z' && (
+        <AlphabeticalDisplay inventory={filteredInventory} />
+      )}
+      {filteredInventory && itemOrder === 'Date added' && (
+        <DateAddedDisplay inventory={filteredInventory} />
+      )}
+      {filteredInventory && itemOrder === 'Category' && (
+        <CategoryDisplay inventory={filteredInventory} />
+      )}
     </>
   )
 }

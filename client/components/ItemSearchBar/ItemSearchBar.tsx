@@ -20,13 +20,13 @@ export default function ItemSearchBar({
           handleSubmit(e)
         }}
       >
-        <label htmlFor="searchText">Search Inventory: </label>
+        <label htmlFor="itemSearchText">Search Inventory: </label>
         <input
           className="search-input"
           type="text"
-          name="searchText"
-          id="searchText"
-          placeholder="Enter item detail"
+          name="itemSearchText"
+          id="itemSearchText"
+          placeholder="Enter keyword"
           value={searchText ? searchText : ''}
           onChange={handleChange}
         />

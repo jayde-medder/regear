@@ -61,11 +61,13 @@ function Inventory() {
       let updatedInventory = [...inventory]
       // Filter based on search bar text
       if (searchText !== '') {
-        updatedInventory = updatedInventory.filter(
-          (item) =>
-            item.name &&
-            typeof item.name === 'string' &&
-            item.name.toLowerCase().includes(searchText.toLowerCase())
+        updatedInventory = updatedInventory.filter((item) =>
+          Object.values(item).some(
+            (value) =>
+              value &&
+              typeof value === 'string' &&
+              value.toLowerCase().includes(searchText.toLowerCase())
+          )
         )
       }
 

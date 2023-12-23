@@ -39,23 +39,6 @@ function Inventory() {
   const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
     []
   )
-  //modifies the inventory based on the searchbar input
-  useEffect(() => {
-    if (searchText !== '' && inventory) {
-      const filteredItems = inventory.filter((item) =>
-        Object.values(item).some(
-          (value) =>
-            value &&
-            typeof value === 'string' &&
-            value.toLowerCase().includes(searchText.toLowerCase())
-        )
-      )
-
-      setFilteredInventory(filteredItems)
-    } else {
-      setFilteredInventory(inventory)
-    }
-  }, [searchText, inventory])
 
   //manages keywords added via searchbar
   const [keywords, setKeywords] = useState<string[]>([])
@@ -71,6 +54,38 @@ function Inventory() {
   const removeKeyword = (keyword: string) => {
     setKeywords(keywords.filter((value) => value !== keyword))
   }
+
+  //modifies the inventory based on the searchbar input
+  useEffect(() => {
+    if (inventory) {
+      let updatedInventory = [...inventory]
+      // Filter based on search bar text
+      if (searchText !== '') {
+        updatedInventory = updatedInventory.filter(
+          (item) =>
+            item.name &&
+            typeof item.name === 'string' &&
+            item.name.toLowerCase().includes(searchText.toLowerCase())
+        )
+      }
+
+      // Filter based on keywords
+      if (keywords.length > 0) {
+        updatedInventory = updatedInventory.filter((item) =>
+          keywords.every((keyword) =>
+            Object.values(item).some(
+              (value) =>
+                value &&
+                typeof value === 'string' &&
+                value.toLowerCase().includes(keyword.toLowerCase())
+            )
+          )
+        )
+      }
+
+      setFilteredInventory(updatedInventory)
+    }
+  }, [searchText, keywords, inventory])
 
   if (isError)
     return (

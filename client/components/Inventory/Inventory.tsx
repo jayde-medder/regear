@@ -10,15 +10,20 @@ import DateAddedDisplay from '../DateAddedDisplay/DateAddedDisplay'
 import ItemSearchBar from '../ItemSearchBar/ItemSearchBar'
 
 function Inventory() {
+  //gets array of items in the inventory with a reduced properties list
   const {
     data: inventory,
     isLoading,
     isError,
   } = useQuery(['inventory'], () => getInventoryList())
 
+  //manages state for how inventory list is displayed
   const [itemOrder, setItemOrder] = useState<string>('A-Z')
 
+  //manages state for string value based on search bar
   const [searchText, setSearchText] = useState<string>('')
+
+  //manages state for filtered inventory list determined by keywords, and checkbox selections
   const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
     []
   )
@@ -27,6 +32,7 @@ function Inventory() {
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemOrder(event.target.value)
   }
+
   //modifies the inventory based on the searchbar input
   useEffect(() => {
     if (searchText !== '' && inventory) {
@@ -61,7 +67,7 @@ function Inventory() {
         <h2>...Loading... </h2>
       </>
     )
-
+  //handles submission of string entered into search bar. Will add term to keywords array
   function handleSubmit(): (e: React.FormEvent<HTMLFormElement>) => void {
     throw new Error('Function not implemented.')
   }

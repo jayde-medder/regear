@@ -1,18 +1,14 @@
 interface props {
-  setSearchText: (e: string) => void
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
   searchText: null | string
+  handleSearchTextChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export default function ItemSearchBar({
-  setSearchText,
   handleSubmit,
   searchText,
+  handleSearchTextChange,
 }: props) {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(event.target.value)
-  }
-
   return (
     <div className="search">
       <form
@@ -28,7 +24,7 @@ export default function ItemSearchBar({
           id="itemSearchText"
           placeholder="Enter keyword"
           value={searchText ? searchText : ''}
-          onChange={handleChange}
+          onChange={handleSearchTextChange}
         />
         <button className="search-button">Submit</button>
       </form>

@@ -8,6 +8,8 @@ import CategoryDisplay from '../CategoryDisplay/CategoryDisplay'
 import AlphabeticalDisplay from '../AlphabeticalDisplay/AlphabeticalDisplay'
 import DateAddedDisplay from '../DateAddedDisplay/DateAddedDisplay'
 import ItemSearchBar from '../ItemSearchBar/ItemSearchBar'
+import e from 'express'
+import Keywords from '../Keywords/Keywords'
 
 function Inventory() {
   //gets array of items in the inventory with a reduced properties list
@@ -17,22 +19,26 @@ function Inventory() {
     isError,
   } = useQuery(['inventory'], () => getInventoryList())
 
-  //manages state for how inventory list is displayed
-  const [itemOrder, setItemOrder] = useState<string>('A-Z')
-
   //manages state for string value based on search bar
   const [searchText, setSearchText] = useState<string>('')
+  const handleSearchTextChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchText(event.target.value)
+    console.log(`searchText ${searchText}`)
+  }
 
-  //manages state for filtered inventory list determined by keywords, and checkbox selections
-  const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
-    []
-  )
-
+  //manages state for how inventory list is displayed
+  const [itemOrder, setItemOrder] = useState<string>('A-Z')
   // sets the order of the item list
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setItemOrder(event.target.value)
   }
 
+  //manages state for filtered inventory list determined by keywords, and checkbox selections
+  const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
+    []
+  )
   //modifies the inventory based on the searchbar input
   useEffect(() => {
     if (searchText !== '' && inventory) {
@@ -51,6 +57,21 @@ function Inventory() {
     }
   }, [searchText, inventory])
 
+  //manages keywords added via searchbar
+  const [keywords, setKeywords] = useState<string[]>([])
+  //handles submission of string entered into search bar. Will add term to keywords array
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (searchText) {
+      setKeywords((prevKeywords) => [...prevKeywords, searchText])
+    }
+    setSearchText('')
+  }
+
+  const removeKeyword = (keyword: string) => {
+    setKeywords(keywords.filter((value) => value !== keyword))
+  }
+
   if (isError)
     return (
       <>
@@ -67,10 +88,6 @@ function Inventory() {
         <h2>...Loading... </h2>
       </>
     )
-  //handles submission of string entered into search bar. Will add term to keywords array
-  function handleSubmit(): (e: React.FormEvent<HTMLFormElement>) => void {
-    throw new Error('Function not implemented.')
-  }
 
   return (
     <>
@@ -80,9 +97,11 @@ function Inventory() {
       />
       <ItemSearchBar
         searchText={searchText}
-        setSearchText={setSearchText}
         handleSubmit={handleSubmit}
+        handleSearchTextChange={handleSearchTextChange}
       />
+
+      <Keywords keywords={keywords} handleClick={removeKeyword} />
 
       {filteredInventory && itemOrder === 'A-Z' && (
         <AlphabeticalDisplay inventory={filteredInventory} />

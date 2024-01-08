@@ -2,7 +2,7 @@
   padding: 20px;
 }
 
-button{
+#log-in-button{
   width: 100%;
   padding: 10px;
   font-family: 'IBM Plex Mono', sans-serif;
@@ -13,6 +13,6 @@ button{
   border: none;
 }
 
-button:hover{
+#log-in-button:hover{
   background-color:#1c867f;
 }

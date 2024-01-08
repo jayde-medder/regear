@@ -15,7 +15,7 @@ root.render(
   <Auth0Provider
     domain="regear.au.auth0.com"
     clientId="DSBCxcWzRz9U2HHFurnjboiFTadfxFKO"
-    redirectUri={window.location.origin}
+    redirectUri="http://localhost:5173/inventory"
     audience="https://regear/api"
   >
     <QueryClientProvider client={queryClient}>

@@ -34,16 +34,6 @@ function Sidebar() {
               />
               <div id={styles['menu-listing']}>ABOUT RE:GEAR</div>
             </li>
-            <Link to={'/inventory'}>
-              <li>
-                <img
-                  id={styles['menu-svgs']}
-                  src="/images/svg/gallery.svg"
-                  alt="About Re:Gear Icon"
-                />
-                <div id={styles['menu-listing']}>INVENTORY</div>
-              </li>
-            </Link>
             <li>
               <img
                 id={styles['menu-svgs']}

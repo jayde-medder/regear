@@ -8,6 +8,7 @@ export function up(knex) {
     table.string('item_name')
     table.string('description')
     table.integer('category_id').references('categories.id')
+    table.date('date_added')
     // table.integer('quantity') removing for now as it makes it hard to track individual items. Can track duplicates in front end
     table.integer('weight')
     table.string('location')

@@ -2,13 +2,92 @@ import { useQuery } from '@tanstack/react-query'
 import styles from './Inventory.module.css'
 import { getInventoryList } from '../../apis/apiInventory'
 import { ItemList } from '../../../models/inventory'
+import { useEffect, useState } from 'react'
+import ItemOrder from '../ItemOrder/ItemDisplayForm'
+import CategoryDisplay from '../CategoryDisplay/CategoryDisplay'
+import AlphabeticalDisplay from '../AlphabeticalDisplay/AlphabeticalDisplay'
+import DateAddedDisplay from '../DateAddedDisplay/DateAddedDisplay'
+import ItemSearchBar from '../ItemSearchBar/ItemSearchBar'
+import e from 'express'
+import Keywords from '../Keywords/Keywords'
 
 function Inventory() {
+  //gets array of items in the inventory with a reduced properties list
   const {
     data: inventory,
     isLoading,
     isError,
   } = useQuery(['inventory'], () => getInventoryList())
+
+  //manages state for string value based on search bar
+  const [searchText, setSearchText] = useState<string>('')
+  const handleSearchTextChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchText(event.target.value)
+    console.log(`searchText ${searchText}`)
+  }
+
+  //manages state for how inventory list is displayed
+  const [itemOrder, setItemOrder] = useState<string>('A-Z')
+  // sets the order of the item list
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setItemOrder(event.target.value)
+  }
+
+  //manages state for filtered inventory list determined by keywords, and checkbox selections
+  const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
+    []
+  )
+
+  //manages keywords added via searchbar
+  const [keywords, setKeywords] = useState<string[]>([])
+  //handles submission of string entered into search bar. Will add term to keywords array
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (searchText) {
+      setKeywords((prevKeywords) => [...prevKeywords, searchText])
+    }
+    setSearchText('')
+  }
+
+  const removeKeyword = (keyword: string) => {
+    setKeywords(keywords.filter((value) => value !== keyword))
+  }
+
+  //modifies the inventory based on the searchbar input
+  useEffect(() => {
+    if (inventory) {
+      let updatedInventory = [...inventory]
+      // Filter based on search bar text
+      if (searchText !== '') {
+        updatedInventory = updatedInventory.filter((item) =>
+          Object.values(item).some(
+            (value) =>
+              value &&
+              typeof value === 'string' &&
+              value.toLowerCase().includes(searchText.toLowerCase())
+          )
+        )
+      }
+
+      // Filter based on keywords
+      if (keywords.length > 0) {
+        updatedInventory = updatedInventory.filter((item) =>
+          keywords.every((keyword) =>
+            Object.values(item).some(
+              (value) =>
+                value &&
+                typeof value === 'string' &&
+                value.toLowerCase().includes(keyword.toLowerCase())
+            )
+          )
+        )
+      }
+
+      setFilteredInventory(updatedInventory)
+    }
+  }, [searchText, keywords, inventory])
 
   if (isError)
     return (
@@ -27,93 +106,31 @@ function Inventory() {
       </>
     )
 
-  //Maps items into categories, so that they can be displayed by category if desired. Might need to alter the approach for conditional rendering of a subset of categories, but should work I hope.
-  const organizeData = (inventory: ItemList[]) => {
-    const categoriesMap = new Map()
+  return (
+    <>
+      <ItemOrder
+        itemOrder={itemOrder}
+        handleSelectChange={handleSelectChange}
+      />
+      <ItemSearchBar
+        searchText={searchText}
+        handleSubmit={handleSubmit}
+        handleSearchTextChange={handleSearchTextChange}
+      />
 
-    const processCategory = (
-      item: ItemList,
-      parentCategory: {
-        subcategories: {
-          id: number
-          name: string
-          items: ItemList[]
-          subcategories: never[]
-        }[]
-      }
-    ) => {
-      const category = parentCategory.subcategories.find(
-        (sub) => sub.id === item.category_id
-      )
+      <Keywords keywords={keywords} handleClick={removeKeyword} />
 
-      if (category) {
-        category.items.push(item)
-      } else {
-        parentCategory.subcategories.push({
-          id: item.category_id,
-          name: `${item.category_name}`,
-          items: [item],
-          subcategories: [],
-        })
-      }
-    }
-
-    inventory.forEach((item) => {
-      if (item.parent_id) {
-        const parentCategory = categoriesMap.get(item.parent_id) || {
-          subcategories: [],
-        }
-        processCategory(item, parentCategory)
-        categoriesMap.set(item.parent_id, parentCategory)
-      } else {
-        const category = categoriesMap.get(item.category_id) || {
-          id: item.category_id,
-          name: `${item.category_name}`,
-          items: [],
-          subcategories: [],
-        }
-        category.items.push(item)
-        categoriesMap.set(item.category_id, category)
-      }
-    })
-
-    console.log(Array.from(categoriesMap.values())) // Log the data structure
-
-    return Array.from(categoriesMap.values())
-  }
-
-  const renderCategory = (category: {
-    id: number
-    name: string
-    items: ItemList[]
-    subcategories: any[]
-  }) => (
-    <div key={category.id}>
-      <h2>{category.name}</h2>
-      {category.items.map((item) => (
-        <div key={item.id}>
-          <p>{item.name}</p>
-          {/* Add more item details as needed */}
-        </div>
-      ))}
-      {/* Render items for subcategories */}
-      {category.subcategories.map((subcategory) => (
-        <div key={subcategory.id}>
-          <h3>{subcategory.name}</h3>
-          {subcategory.items.map((item: ItemList) => (
-            <div key={item.id}>
-              <p>{item.name}</p>
-              {/* Add more item details as needed */}
-            </div>
-          ))}
-          {/* Recursively render subcategories */}
-          {subcategory.subcategories.map(renderCategory)}
-        </div>
-      ))}
-    </div>
+      {filteredInventory && itemOrder === 'A-Z' && (
+        <AlphabeticalDisplay inventory={filteredInventory} />
+      )}
+      {filteredInventory && itemOrder === 'Date added' && (
+        <DateAddedDisplay inventory={filteredInventory} />
+      )}
+      {filteredInventory && itemOrder === 'Category' && (
+        <CategoryDisplay inventory={filteredInventory} />
+      )}
+    </>
   )
-
-  return <div>{organizeData(inventory).map(renderCategory)}</div>
 }
 
 export default Inventory

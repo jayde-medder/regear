@@ -9,6 +9,7 @@ export async function getAllInventoryList(): Promise<ItemList[]> {
     .select(
       'items.id',
       'items.item_name as name',
+      'items.date_added',
       'items.has_fault',
       'items.checked_out',
       'items.image_src',

@@ -2,6 +2,7 @@ export interface ItemList {
   id: number
   name: string
   has_fault: boolean
+  date_added: string
   checked_out: boolean
   image_src: string
   category_id: number

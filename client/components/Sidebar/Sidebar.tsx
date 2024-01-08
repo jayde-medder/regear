@@ -26,56 +26,56 @@ function Sidebar() {
         <div className={styles['sidebar-content']}>
           <LogIn />
           <ul>
-            <li>
-              <img
-                id={styles['menu-svgs']}
-                src="/images/svg/about.svg"
-                alt="About Re:Gear Icon"
-              />
-              <div id={styles['menu-listing']}>ABOUT RE:GEAR</div>
-            </li>
-            <Link to={'/inventory'}>
+            <Link to={'/about'}>
+              <li>
+                <img
+                  id={styles['menu-svgs']}
+                  src="/images/svg/about.svg"
+                  alt="About Re:Gear Icon"
+                />
+                <div id={styles['menu-listing']}>ABOUT RE:GEAR</div>
+              </li>
+            </Link>
+            <Link to={'/gallery'}>
               <li>
                 <img
                   id={styles['menu-svgs']}
                   src="/images/svg/gallery.svg"
                   alt="About Re:Gear Icon"
                 />
-                <div id={styles['menu-listing']}>INVENTORY</div>
+                <div id={styles['menu-listing']}>GALLERY</div>
               </li>
             </Link>
-            <li>
-              <img
-                id={styles['menu-svgs']}
-                src="/images/svg/gallery.svg"
-                alt="About Re:Gear Icon"
-              />
-              <div id={styles['menu-listing']}>GALLERY</div>
-            </li>
-            <li>
-              <img
-                id={styles['menu-svgs']}
-                src="/images/svg/onlinecom.svg"
-                alt="About Re:Gear Icon"
-              />
-              <div id={styles['menu-listing']}>JOIN THE ONLINE COMMUNITY</div>
-            </li>
-            <li>
-              <img
-                id={styles['menu-svgs']}
-                src="/images/svg/faq.svg"
-                alt="About Re:Gear Icon"
-              />
-              <div id={styles['menu-listing']}>FAQ&apos;S</div>
-            </li>
-            <li>
-              <img
-                id={styles['menu-svgs']}
-                src="/images/svg/contact.svg"
-                alt="About Re:Gear Icon"
-              />
-              <div id={styles['menu-listing']}>CONTACT</div>
-            </li>
+            <Link to={'/community'}>
+              <li>
+                <img
+                  id={styles['menu-svgs']}
+                  src="/images/svg/onlinecom.svg"
+                  alt="About Re:Gear Icon"
+                />
+                <div id={styles['menu-listing']}>JOIN THE ONLINE COMMUNITY</div>
+              </li>
+            </Link>
+            <Link to={'/faq'}>
+              <li>
+                <img
+                  id={styles['menu-svgs']}
+                  src="/images/svg/faq.svg"
+                  alt="About Re:Gear Icon"
+                />
+                <div id={styles['menu-listing']}>FAQ&apos;S</div>
+              </li>
+            </Link>
+            <Link to={'/contact'}>
+              <li>
+                <img
+                  id={styles['menu-svgs']}
+                  src="/images/svg/contact.svg"
+                  alt="About Re:Gear Icon"
+                />
+                <div id={styles['menu-listing']}>CONTACT</div>
+              </li>
+            </Link>
           </ul>
         </div>
       </div>

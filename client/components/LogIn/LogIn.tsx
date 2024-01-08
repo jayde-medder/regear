@@ -14,6 +14,7 @@ function LogIn() {
         <button id={styles['log-in-button']} onClick={() => logout()}>
           LOG OUT
         </button>
+        <p>logged in as {user?.nickname}/user details component to go here</p>
       </IfAuthenticated>
       <IfNotAuthenticated>
         <button

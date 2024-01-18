@@ -7,6 +7,8 @@ Requests to `http://localhost:5173/api` are proxied to `http://localhost:3000/ap
 
 ## Setup
 
+- https://github.com/dev-academy-programme/computer-setup?tab=readme-ov-file
+
 To use:
 - git clone
 - npm install

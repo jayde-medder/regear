@@ -40,5 +40,15 @@ export async function seed(knex) {
       name: 'Headphones',
       parent_id: 2,
     },
+    {
+      id: 9,
+      name: 'Lights',
+      parent_id: 3,
+    },
+    {
+      id: 10,
+      name: 'Printers',
+      parent_id: 4,
+    },
   ])
 }

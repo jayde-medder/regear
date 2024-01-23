@@ -1,0 +1,14 @@
+.listing-container{
+  background-color: gainsboro;
+  padding: 10px;
+  margin: 20px;
+  width: 200px;
+}
+
+.listing-container h3{
+  margin: 0;
+}
+
+.listing-container img{
+  width: 200px;
+}

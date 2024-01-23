@@ -9,13 +9,11 @@ export default function AlphabeticalDisplay({ inventory }: props) {
     .sort((a, b) => a.name.localeCompare(b.name))
   return (
     <>
-      <ul>
-        {alphabeticalInventory.map((item) => (
-          <div key={item.id}>
-            <ItemListing item={item} />
-          </div>
-        ))}
-      </ul>
+      {alphabeticalInventory.map((item) => (
+        <div key={item.id}>
+          <ItemListing item={item} />
+        </div>
+      ))}
     </>
   )
 }

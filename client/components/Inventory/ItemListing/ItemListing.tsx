@@ -6,8 +6,8 @@ interface props {
 export default function ItemListing({ item }: props) {
   return (
     <div className={styles['listing-container']}>
-      <h3>{item.name}</h3>
       <img src={item.image_src} alt={item.name}></img>
+      <h3>{item.name}</h3>
     </div>
   )
 }

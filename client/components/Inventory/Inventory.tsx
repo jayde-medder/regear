@@ -117,16 +117,17 @@ function Inventory() {
       />
 
       <Keywords keywords={keywords} handleClick={removeKeyword} />
-
-      {filteredInventory && itemOrder === 'A-Z' && (
-        <AlphabeticalDisplay inventory={filteredInventory} />
-      )}
-      {filteredInventory && itemOrder === 'Date added' && (
-        <DateAddedDisplay inventory={filteredInventory} />
-      )}
-      {filteredInventory && itemOrder === 'Category' && (
-        <CategoryDisplay inventory={filteredInventory} />
-      )}
+      <div className={styles['inventory-list']}>
+        {filteredInventory && itemOrder === 'A-Z' && (
+          <AlphabeticalDisplay inventory={filteredInventory} />
+        )}
+        {filteredInventory && itemOrder === 'Date added' && (
+          <DateAddedDisplay inventory={filteredInventory} />
+        )}
+        {filteredInventory && itemOrder === 'Category' && (
+          <CategoryDisplay inventory={filteredInventory} />
+        )}
+      </div>
     </>
   )
 }

@@ -1,0 +1,7 @@
+.inventory-list{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

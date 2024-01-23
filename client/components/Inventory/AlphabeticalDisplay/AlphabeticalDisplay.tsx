@@ -1,6 +1,6 @@
-import { ItemList } from '../../../../models/inventory'
+import { Item } from '../../../../models/inventory'
 interface props {
-  inventory: ItemList[]
+  inventory: Item[]
 }
 export default function AlphabeticalDisplay({ inventory }: props) {
   const alphabeticalInventory = inventory

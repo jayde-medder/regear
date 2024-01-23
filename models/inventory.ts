@@ -1,4 +1,4 @@
-export interface ItemList {
+export interface Item {
   id: number
   name: string
   has_fault: boolean

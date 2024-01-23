@@ -6,12 +6,39 @@ export async function seed(knex) {
   await knex('categories').insert([
     {
       id: 1,
-      name: 'Loud stuff',
+      name: 'Ready for a home',
     },
     {
       id: 2,
-      name: 'Speaker',
+      name: 'Borrow Gear',
+    },
+    {
+      id: 3,
+      name: 'Fix-It-Yourself',
+    },
+    {
+      id: 4,
+      name: 'Parts',
+    },
+    {
+      id: 5,
+      name: 'Mixers',
       parent_id: 1,
+    },
+    {
+      id: 6,
+      name: 'Instruments',
+      parent_id: 1,
+    },
+    {
+      id: 7,
+      name: 'Percussion',
+      parent_id: 6,
+    },
+    {
+      id: 8,
+      name: 'Headphones',
+      parent_id: 2,
     },
   ])
 }

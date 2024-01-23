@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import styles from './Inventory.module.css'
 import { getInventoryList } from '../../apis/apiInventory'
-import { ItemList } from '../../../models/inventory'
+import { Item } from '../../../models/inventory'
 import { useEffect, useState } from 'react'
 import ItemOrder from './ItemOrder/ItemDisplayForm'
 import CategoryDisplay from './CategoryDisplay/CategoryDisplay'
@@ -36,9 +36,7 @@ function Inventory() {
   }
 
   //manages state for filtered inventory list determined by keywords, and checkbox selections
-  const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
-    []
-  )
+  const [filteredInventory, setFilteredInventory] = useState<Item[] | any>([])
 
   //manages keywords added via searchbar
   const [keywords, setKeywords] = useState<string[]>([])

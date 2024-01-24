@@ -10,6 +10,7 @@ import DateAddedDisplay from './DateAddedDisplay/DateAddedDisplay'
 import ItemSearchBar from './ItemSearchBar/ItemSearchBar'
 import e from 'express'
 import Keywords from './Keywords/Keywords'
+import CategorySelect from './CategorySelect/CategorySelect'
 
 function Inventory() {
   //gets array of items in the inventory with a reduced properties list
@@ -117,7 +118,7 @@ function Inventory() {
       />
 
       <Keywords keywords={keywords} handleClick={removeKeyword} />
-      <div className={styles['inventory-list']}>
+      <div className={styles['inventory']}>
         {filteredInventory && itemOrder === 'A-Z' && (
           <AlphabeticalDisplay inventory={filteredInventory} />
         )}

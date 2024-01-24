@@ -1,5 +1,6 @@
 import { Item } from '../../../../models/inventory'
 import ItemListing from '../ItemListing/ItemListing'
+import styles from './AlphabeticalDisplay.module.css'
 interface props {
   inventory: Item[]
 }
@@ -10,7 +11,7 @@ export default function AlphabeticalDisplay({ inventory }: props) {
   return (
     <>
       {alphabeticalInventory.map((item) => (
-        <div key={item.id}>
+        <div className={styles['inventory-list']} key={item.id}>
           <ItemListing item={item} />
         </div>
       ))}

@@ -25,6 +25,7 @@
 }
 
 #logo:hover {
+  transition: 200ms;
   opacity: 75%;
 }
 
@@ -40,6 +41,8 @@
 }
 
 #inventory-button:hover{
+  cursor: pointer;
   background-color:#1c867f;
+  transition: 200ms;
   color: white;
 }

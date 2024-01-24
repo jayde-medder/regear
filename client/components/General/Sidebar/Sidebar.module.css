@@ -58,6 +58,7 @@ a {
 }
 
 .sidebar li:hover {
+  transition: 400ms;
   background-color: #eeeeee;
 }
 

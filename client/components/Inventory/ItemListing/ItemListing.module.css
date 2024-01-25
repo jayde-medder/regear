@@ -1,4 +1,4 @@
-.listing-container{
+.listing-card{
   margin: 5px;
   flex-grow: 1;
 	width: 200px;
@@ -14,7 +14,7 @@
   height: 200px;
 }
 
-.listing-container img{
+.listing-card img{
   margin: 10px;
   width: 180px;
   max-height: 180px;
@@ -29,7 +29,12 @@
   height: 60px;
 }
 
-.listing-details h3{
+#sub{
+  background-color: black;
+  color: white;
+}
+
+.listing-name h3{
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 500;
   font-size: 14px;

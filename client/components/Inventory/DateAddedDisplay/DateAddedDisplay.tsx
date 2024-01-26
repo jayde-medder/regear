@@ -1,4 +1,6 @@
 import { Item } from '../../../../models/inventory'
+import styles from './DateAddedDisplay.module.css'
+import ItemListing from '../ItemListing/ItemListing'
 
 interface props {
   inventory: Item[]
@@ -14,13 +16,11 @@ export default function DateAddedDisplay({ inventory }: props) {
   })
   return (
     <>
-      <ul>
-        {dateAddedInventory.map((item) => (
-          <div key={item.id}>
-            <h3>{item.name}</h3>
-          </div>
-        ))}
-      </ul>
+      {dateAddedInventory.map((item) => (
+        <div className={styles['inventory-list']} key={item.id}>
+          <ItemListing item={item} />
+        </div>
+      ))}
     </>
   )
 }

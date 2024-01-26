@@ -29,7 +29,7 @@ export default function ItemListing({ item }: props) {
             isOpen ? styles.open : ''
           }`}
         >
-          <h3>Category: {item.category_id}</h3>
+          <h3>Category: {item.root_category}</h3>
         </div>
       </div>
     </>

@@ -8,4 +8,5 @@ export interface Item {
   category_id: number
   category_name: string
   parent_id: number | null
+  root_category: string
 }

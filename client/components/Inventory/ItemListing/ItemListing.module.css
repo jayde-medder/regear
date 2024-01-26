@@ -5,6 +5,15 @@
 	border: 1px solid rgb(203 213 225);
 }
 
+.listing-card:hover{
+  cursor: pointer;
+}
+
+.listing-card.open{
+  height: calc(100% - 12px);
+  margin-bottom: -60px;
+}
+
 .image-wrapper{
   display: flex;
   align-items: center;
@@ -20,21 +29,32 @@
   max-height: 180px;
 }
 
-.listing-details{
+.listing-header{
   display: flex;
   align-items: center;
   overflow-y: hidden;
   background-color: white;
   border-top: 1px solid rgb(203 213 225);
-  height: 60px;
+  min-height: 60px;
 }
 
-#sub{
+.listing-details{
   background-color: black;
   color: white;
+  visibility: hidden;
+  height: 0px;
 }
 
-.listing-name h3{
+.listing-details.open{
+  transform: translate(0px, -60px);
+  visibility: visible;
+  border-bottom: 1px solid rgb(203 213 225);
+  height: 60px;
+  transition: 300ms;
+  overflow-y: hidden;
+}
+
+.listing-card h3{
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 500;
   font-size: 14px;

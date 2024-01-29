@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import Nav from '../Nav/Nav.tsx'
-import Sidebar from '../Sidebar/Sidebar.tsx'
-// import Home from '../Home/Home.tsx'
-import Marquee from '../Marquee/Marquee.tsx'
+import Nav from '../General/Nav/Nav.tsx'
+import Sidebar from '../General/Sidebar/Sidebar.tsx'
+import Marquee from '../General/Marquee/Marquee.tsx'
 import styles from './App.module.css'
 import { Outlet } from 'react-router-dom'
 

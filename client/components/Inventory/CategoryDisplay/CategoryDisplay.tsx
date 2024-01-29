@@ -1,19 +1,21 @@
-import { ItemList } from '../../../models/inventory'
+import { Item } from '../../../../models/inventory'
 interface props {
-  inventory: ItemList[]
+  inventory: Item[]
 }
 export default function CategoryDisplay({ inventory }: props) {
-  //Maps items into categories, so that they can be displayed by category if desired. Might need to alter the approach for conditional rendering of a subset of categories, but should work I hope.
-  const organizeData = (inventory: ItemList[]) => {
+  //Maps items into categories, so that they can be displayed by category if desired.
+  //Might need to alter the approach for conditional rendering of a subset of categories,
+  //but should work I hope.
+  const organizeData = (inventory: Item[]) => {
     const categoriesMap = new Map()
 
     const processCategory = (
-      item: ItemList,
+      item: Item,
       parentCategory: {
         subcategories: {
           id: number
           name: string
-          items: ItemList[]
+          items: Item[]
           subcategories: never[]
         }[]
       }
@@ -61,7 +63,7 @@ export default function CategoryDisplay({ inventory }: props) {
   const renderCategory = (category: {
     id: number
     name: string
-    items: ItemList[]
+    items: Item[]
     subcategories: any[]
   }) => (
     <div key={category.id}>
@@ -75,7 +77,7 @@ export default function CategoryDisplay({ inventory }: props) {
       {category.subcategories.map((subcategory) => (
         <div key={subcategory.id}>
           <h3>{subcategory.name}</h3>
-          {subcategory.items.map((item: ItemList) => (
+          {subcategory.items.map((item: Item) => (
             <div key={item.id}>
               <p>{item.name}</p>
               {/* Add more item details as needed */}

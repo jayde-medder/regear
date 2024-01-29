@@ -1,9 +1,9 @@
 import connection from './connection'
-import { ItemList } from '../../models/inventory'
+import { Item } from '../../models/inventory'
 
 const db = connection
 
-export async function getAllInventoryList(): Promise<ItemList[]> {
+export async function getAllInventoryList(): Promise<Item[]> {
   return db('items')
     .join('categories', 'items.category_id', 'categories.id')
     .select(

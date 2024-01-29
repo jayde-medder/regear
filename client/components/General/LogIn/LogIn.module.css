@@ -14,5 +14,7 @@
 }
 
 #log-in-button:hover{
+  cursor: pointer;
   background-color:#1c867f;
+  transition: 200ms;
 }

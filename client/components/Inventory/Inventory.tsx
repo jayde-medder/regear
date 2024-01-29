@@ -1,15 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import styles from './Inventory.module.css'
 import { getInventoryList } from '../../apis/apiInventory'
-import { ItemList } from '../../../models/inventory'
+import { Item } from '../../../models/inventory'
 import { useEffect, useState } from 'react'
-import ItemOrder from '../ItemOrder/ItemDisplayForm'
-import CategoryDisplay from '../CategoryDisplay/CategoryDisplay'
-import AlphabeticalDisplay from '../AlphabeticalDisplay/AlphabeticalDisplay'
-import DateAddedDisplay from '../DateAddedDisplay/DateAddedDisplay'
-import ItemSearchBar from '../ItemSearchBar/ItemSearchBar'
+import ItemOrder from './ItemOrder/ItemDisplayForm'
+import CategoryDisplay from './CategoryDisplay/CategoryDisplay'
+import AlphabeticalDisplay from './AlphabeticalDisplay/AlphabeticalDisplay'
+import DateAddedDisplay from './DateAddedDisplay/DateAddedDisplay'
+import ItemSearchBar from './ItemSearchBar/ItemSearchBar'
 import e from 'express'
-import Keywords from '../Keywords/Keywords'
+import Keywords from './Keywords/Keywords'
+import CategorySelect from './CategorySelect/CategorySelect'
 
 function Inventory() {
   //gets array of items in the inventory with a reduced properties list
@@ -36,9 +37,7 @@ function Inventory() {
   }
 
   //manages state for filtered inventory list determined by keywords, and checkbox selections
-  const [filteredInventory, setFilteredInventory] = useState<ItemList[] | any>(
-    []
-  )
+  const [filteredInventory, setFilteredInventory] = useState<Item[] | any>([])
 
   //manages keywords added via searchbar
   const [keywords, setKeywords] = useState<string[]>([])
@@ -119,16 +118,17 @@ function Inventory() {
       />
 
       <Keywords keywords={keywords} handleClick={removeKeyword} />
-
-      {filteredInventory && itemOrder === 'A-Z' && (
-        <AlphabeticalDisplay inventory={filteredInventory} />
-      )}
-      {filteredInventory && itemOrder === 'Date added' && (
-        <DateAddedDisplay inventory={filteredInventory} />
-      )}
-      {filteredInventory && itemOrder === 'Category' && (
-        <CategoryDisplay inventory={filteredInventory} />
-      )}
+      <div className={styles['inventory']}>
+        {filteredInventory && itemOrder === 'A-Z' && (
+          <AlphabeticalDisplay inventory={filteredInventory} />
+        )}
+        {filteredInventory && itemOrder === 'Date added' && (
+          <DateAddedDisplay inventory={filteredInventory} />
+        )}
+        {filteredInventory && itemOrder === 'Category' && (
+          <CategoryDisplay inventory={filteredInventory} />
+        )}
+      </div>
     </>
   )
 }

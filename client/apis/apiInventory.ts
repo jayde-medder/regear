@@ -20,5 +20,5 @@ export async function getAllInventory(): Promise<CompleteItem[]> {
   if (res.status !== 200) {
     throw new Error('Failed to fetch Inventory')
   }
-  return res.body.inventory as CompleteItem[]
+  return res.body.completeInventory as CompleteItem[]
 }

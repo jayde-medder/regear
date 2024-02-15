@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
+import { getAllInventory } from '../../../apis/apiInventory'
 
 function InventoryManager() {
   const {
@@ -17,6 +18,7 @@ function InventoryManager() {
         </h2>
       </>
     )
+
   if (isLoading)
     return (
       <>
@@ -27,7 +29,27 @@ function InventoryManager() {
 
   return (
     <>
-      <h2>adminInventory</h2>
+      <h2>Inventory</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            {/* Add more table headers for other properties */}
+          </tr>
+        </thead>
+        <tbody>
+          {inventory.map((item) => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+              <td>{item.description}</td>
+              {/* Add more table cells for other properties */}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   )
 }

@@ -10,3 +10,16 @@ export interface Item {
   parent_id: number | null
   root_category: string
 }
+
+export interface CompleteItem extends Item {
+  description: string
+  weight: number
+  location: string
+  owner_id: number
+  owner_name: string
+  fixed_by_RG: boolean
+  certification_needed: boolean
+  cert_expiry_date: null | string
+  RG_inventory: boolean
+  logbook: string
+}

@@ -9,6 +9,25 @@ function InventoryManager() {
     isError,
   } = useQuery(['adminInventory'], () => getAllInventory())
 
+  const [columnVisibility, setColumnVisibility] = useState<{
+    [key: string]: boolean
+  }>({})
+
+  if (inventory && Object.keys(columnVisibility).length === 0) {
+    const initialVisibilty: { [key: string]: boolean } = {}
+    Object.keys(inventory[0]).forEach((column) => {
+      initialVisibilty[column] = false
+    })
+    setColumnVisibility(initialVisibilty)
+  }
+
+  const toggleColumnVisibility = (column: string) => {
+    setColumnVisibility((prevState) => ({
+      ...prevState,
+      [column]: !prevState[column],
+    }))
+  }
+
   if (isError)
     return (
       <>
@@ -28,29 +47,45 @@ function InventoryManager() {
     )
 
   return (
-    <>
-      <h2>Inventory</h2>
+    <div>
+      <div>
+        {/* Checkbox for each column */}
+        {inventory &&
+          Object.keys(columnVisibility).map((column, index) => (
+            <label key={index}>
+              <input
+                type="checkbox"
+                checked={columnVisibility[column]}
+                onChange={() => toggleColumnVisibility(column)}
+              />
+              {column}
+            </label>
+          ))}
+      </div>
+
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            {/* Add more table headers for other properties */}
+            {/* Render table headers based on columnVisibility */}
+            {Object.keys(columnVisibility).map(
+              (column, index) =>
+                columnVisibility[column] && <th key={index}>{column}</th>
+            )}
           </tr>
         </thead>
         <tbody>
-          {inventory.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.description}</td>
-              {/* Add more table cells for other properties */}
+          {inventory.map((item, rowIndex) => (
+            <tr key={rowIndex}>
+              {/* Render table cells based on columnVisibility */}
+              {Object.entries(item).map(
+                ([key, value], colIndex) =>
+                  columnVisibility[key] && <td key={colIndex}>{value}</td>
+              )}
             </tr>
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   )
 }
 

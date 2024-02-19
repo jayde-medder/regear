@@ -51,7 +51,6 @@ export async function getCompleteInventory() {
     .join('categories', 'items.category_id', 'categories.id')
     .select(
       'items.*',
-      'items.item_name as name',
       'categories.name as category_name',
       'categories.parent_id'
     )

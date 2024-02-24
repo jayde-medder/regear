@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { getAllInventory } from '../../../apis/apiInventory'
 
 function InventoryManager() {
@@ -28,6 +28,20 @@ function InventoryManager() {
     }))
   }
 
+  const resetColumnVisibility = () => {
+    setColumnVisibility({})
+  }
+
+  const selectAllColumns = () => {
+    setColumnVisibility((prevState) => {
+      const updatedVisibility = { ...prevState }
+      Object.keys(updatedVisibility).forEach((column) => {
+        updatedVisibility[column] = true
+      })
+      return updatedVisibility
+    })
+  }
+
   if (isError)
     return (
       <>
@@ -48,6 +62,10 @@ function InventoryManager() {
 
   return (
     <div>
+      <div>
+        <button onClick={() => resetColumnVisibility()}>Clear all</button>
+        <button onClick={() => selectAllColumns()}>Select all</button>
+      </div>
       <div>
         {/* Checkbox for each column */}
         {inventory &&

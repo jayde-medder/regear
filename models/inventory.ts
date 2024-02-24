@@ -12,6 +12,7 @@ export interface Item {
 }
 
 export interface CompleteItem extends Item {
+  item_name: string
   description: string
   weight: number
   location: string

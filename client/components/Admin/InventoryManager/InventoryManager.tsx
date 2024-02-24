@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { getAllInventory } from '../../../apis/apiInventory'
+import { Link } from 'react-router-dom'
 
 function InventoryManager() {
   const {
@@ -14,11 +15,14 @@ function InventoryManager() {
   }>({})
 
   if (inventory && Object.keys(columnVisibility).length === 0) {
-    const initialVisibilty: { [key: string]: boolean } = {}
+    const initialVisibility: { [key: string]: boolean } = {}
     Object.keys(inventory[0]).forEach((column) => {
-      initialVisibilty[column] = false
+      initialVisibility[column] = false
     })
-    setColumnVisibility(initialVisibilty)
+    // Set id and item_name columns always visible
+    initialVisibility['id'] = true
+    initialVisibility['item_name'] = true
+    setColumnVisibility(initialVisibility)
   }
 
   const toggleColumnVisibility = (column: string) => {
@@ -63,41 +67,57 @@ function InventoryManager() {
   return (
     <div>
       <div>
+        <Link to="add">
+          <button>Add New Inventory </button>
+        </Link>
+      </div>
+      <div>
         <button onClick={() => resetColumnVisibility()}>Clear all</button>
         <button onClick={() => selectAllColumns()}>Select all</button>
       </div>
       <div>
-        {/* Checkbox for each column */}
         {inventory &&
-          Object.keys(columnVisibility).map((column, index) => (
-            <label key={index}>
-              <input
-                type="checkbox"
-                checked={columnVisibility[column]}
-                onChange={() => toggleColumnVisibility(column)}
-              />
-              {column}
-            </label>
-          ))}
+          Object.keys(columnVisibility).map(
+            (column, index) =>
+              column !== 'id' &&
+              column !== 'item_name' && (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    checked={columnVisibility[column]}
+                    onChange={() => toggleColumnVisibility(column)}
+                  />
+                  {column}
+                </label>
+              )
+          )}
       </div>
 
       <table>
         <thead>
           <tr>
+            {/* Always render 'id' and 'item_name' columns*/}
+            <th>id</th>
+            <th>item_name</th>
             {/* Render table headers based on columnVisibility */}
             {Object.keys(columnVisibility).map(
               (column, index) =>
-                columnVisibility[column] && <th key={index}>{column}</th>
+                columnVisibility[column] &&
+                column !== 'id' &&
+                column !== 'item_name' && <th key={index}>{column}</th>
             )}
           </tr>
         </thead>
         <tbody>
           {inventory.map((item, rowIndex) => (
             <tr key={rowIndex}>
-              {/* Render table cells based on columnVisibility */}
+              <td>{item['id']}</td>
+              <td>{item['item_name']}</td>
               {Object.entries(item).map(
                 ([key, value], colIndex) =>
-                  columnVisibility[key] && <td key={colIndex}>{value}</td>
+                  columnVisibility[key] &&
+                  key !== 'id' &&
+                  key !== 'item_name' && <td key={colIndex}>{value}</td>
               )}
             </tr>
           ))}

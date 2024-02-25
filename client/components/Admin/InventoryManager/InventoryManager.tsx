@@ -59,7 +59,7 @@ function InventoryManager() {
   if (isLoading)
     return (
       <>
-        {/* add loading animation */}
+        {/* todo add loading animation */}
         <h2>...Loading... </h2>
       </>
     )

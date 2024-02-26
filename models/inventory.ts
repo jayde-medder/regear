@@ -29,7 +29,7 @@ export interface NewItem {
   itemName: string
   faulty: boolean
   image: File | null
-  category: string
+  categoryId: null | number
   description: string
   weight: string | number
   location: string

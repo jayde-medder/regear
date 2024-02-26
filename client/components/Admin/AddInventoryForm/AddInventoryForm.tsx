@@ -1,14 +1,24 @@
 import { useState } from 'react'
 import StatusBar from '../../General/StatusBars/StatusBar'
 import { NewItem } from '../../../../models/inventory'
-import { addNewInventoryItem } from '../../../apis/apiInventory'
+import {
+  addNewInventoryItem,
+  getAllCategories,
+} from '../../../apis/apiInventory'
+import { useQuery } from '@tanstack/react-query'
 
 export default function AddInventoryForm() {
+  const {
+    data: categories,
+    isLoading,
+    isError,
+  } = useQuery(['categories'], () => getAllCategories())
   // Define state variables to store form inputs
   const [itemName, setItemName] = useState('')
   const [faulty, setFaulty] = useState(false)
   const [image, setImage] = useState<null | File>(null)
   const [category, setCategory] = useState('')
+  const [categoryId, setCategoryId] = useState<null | number>(null)
   const [description, setDescription] = useState('')
   const [weight, setWeight] = useState<string | number>('')
   const [location, setLocation] = useState('')
@@ -19,6 +29,18 @@ export default function AddInventoryForm() {
 
   const [itemAddedStatus, setItemAddedStatus] = useState<boolean>(false)
 
+  const handleCategoryChange = (e: { target: { value: any } }) => {
+    const selectedCategory = e.target.value
+    // Find the selected category object from categories state
+    const selectedCategoryObject = categories?.find(
+      (cat) => cat.name === selectedCategory
+    )
+    if (selectedCategoryObject) {
+      setCategory(selectedCategory)
+      setCategoryId(selectedCategoryObject.id)
+    }
+  }
+
   // Function to handle form submission
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
@@ -27,7 +49,7 @@ export default function AddInventoryForm() {
       itemName,
       faulty,
       image,
-      category,
+      categoryId,
       description,
       weight,
       location,
@@ -41,12 +63,14 @@ export default function AddInventoryForm() {
   }
 
   const submitFormData = async (formData: NewItem) => {
-    await addNewInventoryItem(formData)
-    setItemAddedStatus(true)
-    setTimeout(() => {
-      setItemAddedStatus(false)
-    }, 1500)
-    resetForm()
+    const res = await addNewInventoryItem(formData)
+    if (res == 200) {
+      setItemAddedStatus(true)
+      setTimeout(() => {
+        setItemAddedStatus(false)
+      }, 1500)
+      resetForm()
+    }
   }
 
   const resetForm = () => {
@@ -61,6 +85,25 @@ export default function AddInventoryForm() {
     setCertificationNeeded(false)
     setCertificationExpiryDate('')
   }
+
+  if (isError)
+    return (
+      <>
+        <h2>
+          There seems to be a problem accessing the inventory. Please send us a
+          request
+        </h2>
+      </>
+    )
+
+  if (isLoading)
+    return (
+      <>
+        {/* todo add loading animation */}
+        <h2>...Loading... </h2>
+      </>
+    )
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -98,11 +141,14 @@ export default function AddInventoryForm() {
         <div>
           <label>
             Category:
-            <input
-              type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
+            <select value={category} onChange={handleCategoryChange}>
+              <option value="">Select a category...</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.name}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
           </label>
         </div>
         <div>

@@ -23,6 +23,16 @@ export async function getAllInventory(): Promise<CompleteItem[]> {
   return res.body.completeInventory as CompleteItem[]
 }
 
+// Get /api/v1/inventory/admin
+// For admin/InventoryManagement
+export async function getAllCategories(): Promise<CompleteItem[]> {
+  const res = await request.get(`${rootUrl}/inventory/categories`)
+  if (res.status !== 200) {
+    throw new Error('Failed to fetch categories')
+  }
+  return res.body.categories
+}
+
 //Post /api/v1/inventory/add
 export async function addNewInventoryItem(formData: NewItem) {
   try {

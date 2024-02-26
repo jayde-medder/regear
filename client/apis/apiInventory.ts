@@ -1,5 +1,5 @@
 import request from 'superagent'
-import type { CompleteItem, Item } from '../../models/inventory'
+import type { CompleteItem, Item, NewItem } from '../../models/inventory'
 
 const rootUrl = '/api/v1'
 
@@ -22,3 +22,5 @@ export async function getAllInventory(): Promise<CompleteItem[]> {
   }
   return res.body.completeInventory as CompleteItem[]
 }
+
+export async function addNewInventoryItem(formData: NewItem) {}

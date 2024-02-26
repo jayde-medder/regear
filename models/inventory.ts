@@ -24,3 +24,16 @@ export interface CompleteItem extends Item {
   RG_inventory: boolean
   logbook: string
 }
+
+export interface NewItem {
+  itemName: string
+  faulty: boolean
+  image: File | null
+  category: string
+  description: string
+  weight: string | number
+  location: string
+  owner: string
+  certificationNeeded: boolean
+  certificationExpiryDate: string
+}

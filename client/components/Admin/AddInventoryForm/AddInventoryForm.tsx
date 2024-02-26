@@ -20,7 +20,7 @@ export default function AddInventoryForm() {
   const [itemAddedStatus, setItemAddedStatus] = useState<boolean>(false)
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     // Here you can handle form submission, for example, send data to server
     const formData = {

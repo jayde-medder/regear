@@ -23,4 +23,17 @@ export async function getAllInventory(): Promise<CompleteItem[]> {
   return res.body.completeInventory as CompleteItem[]
 }
 
-export async function addNewInventoryItem(formData: NewItem) {}
+//Post /api/v1/inventory/add
+export async function addNewInventoryItem(formData: NewItem) {
+  try {
+    const res = await request.post(`${rootUrl}/inventory/add`).send(formData)
+
+    if (res.status !== 200) {
+      throw new Error('Failed to add item to inventory')
+    }
+
+    return res.status
+  } catch (error) {
+    throw new Error('Failed to add item to inventory')
+  }
+}

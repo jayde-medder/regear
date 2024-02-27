@@ -1,8 +1,8 @@
-import { Item } from '../../../../models/inventory'
+import { CompleteItem, Item } from '../../../../models/inventory'
 import ItemListing from '../ItemListing/ItemListing'
 import styles from './AlphabeticalDisplay.module.css'
 interface props {
-  inventory: Item[]
+  inventory: Item[] | CompleteItem[]
 }
 export default function AlphabeticalDisplay({ inventory }: props) {
   const alphabeticalInventory = inventory
@@ -11,7 +11,7 @@ export default function AlphabeticalDisplay({ inventory }: props) {
   return (
     <>
       {alphabeticalInventory.map((item) => (
-        <div className={styles['inventory-list']} key={item.id}>
+        <div key={item.id}>
           <ItemListing item={item} />
         </div>
       ))}

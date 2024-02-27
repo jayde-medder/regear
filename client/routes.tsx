@@ -7,12 +7,16 @@ import Gallery from './components/Gallery/Gallery'
 import Community from './components/Community/Community'
 import FAQ from './components/FAQ/FAQ'
 import Contact from './components/Contact/Contact'
+import InventoryManager from './components/Admin/InventoryManager/InventoryManager'
+import AddInventoryForm from './components/Admin/AddInventoryForm/AddInventoryForm'
 
 export const routes = createRoutesFromElements(
   <>
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="inventory" element={<Inventory />} />
+      <Route path="admin/inventory" element={<InventoryManager />} />
+      <Route path="admin/inventory/add" element={<AddInventoryForm />} />
       <Route path="about" element={<About />} />
       <Route path="gallery" element={<Gallery />} />
       <Route path="community" element={<Community />} />

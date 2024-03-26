@@ -3,9 +3,11 @@
  * @returns { Promise<void> }
  */
 export function up(knex) {
-  return knex.schema.createTable('item_groups', (table) => {
-    table.integer('item').references('item.id')
-    table.integer('group').references('group.id')
+  return knex.schema.createTable('log_kind', (table) => {
+    table.increments('id').primary()
+    table.string('name')
+    table.string('color')
+    table.text('desc')
   })
 }
 
@@ -14,5 +16,5 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.dropTable('item_groups')
+  return knex.schema.dropTable('log_kind')
 }

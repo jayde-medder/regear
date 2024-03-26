@@ -3,14 +3,14 @@
  * @returns { Promise<void> }
  */
 export function up(knex) {
-  return knex.schema.createTable('items', (table) => {
+  return knex.schema.createTable('item', (table) => {
     table.increments('id').primary()
     table.string('name')
-    table.string('desc')
+    table.text('desc')
     table.date('date_added')
     table.numeric('weight', 7, 2)
     table.string('location')
-    table.integer('owner_id').nullable().references('users.id')
+    table.integer('owner_id').nullable()
     table.string('image_src')
     table.boolean('is_borrowable')
     table.boolean('is_claimable')
@@ -22,5 +22,5 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.dropTable('items')
+  return knex.schema.dropTable('item')
 }

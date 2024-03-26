@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 export async function up(knex) {
-  return knex.schema.createTable('posts', (table) => {
+  return knex.schema.createTable('post', (table) => {
     table.increments('id').primary()
     table.string('title')
     table.date('date')
@@ -17,5 +17,5 @@ export async function up(knex) {
  * @returns { Promise<void> }
  */
 export async function down(knex) {
-  return knex.schema.dropTable('posts')
+  return knex.schema.dropTable('post')
 }

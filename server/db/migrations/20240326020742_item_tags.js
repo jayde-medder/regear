@@ -4,8 +4,8 @@
  */
 export function up(knex) {
   return knex.schema.createTable('item_tags', (table) => {
-    table.increments('item').references('item.id')
-    table.string('tag').references('tag.id')
+    table.integer('item').references('item.id')
+    table.integer('tag').references('tag.id')
   })
 }
 

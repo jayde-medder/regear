@@ -46,5 +46,17 @@ export async function seed(knex) {
       color: 'pink',
       parent_id: null,
     },
+    {
+      id: 8,
+      name: 'Batteries and Power Adapters',
+      color: 'magenta',
+      parent_id: null,
+    },
+    {
+      id: 9,
+      name: 'Electronic Gadgets',
+      color: 'teal',
+      parent_id: null,
+    },
   ])
 }

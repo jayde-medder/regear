@@ -9,7 +9,7 @@ export default function ItemListing({ item }: props) {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleHover = () => {
-    setIsOpen(!isOpen)
+    //setIsOpen(!isOpen)
   }
   return (
     <>

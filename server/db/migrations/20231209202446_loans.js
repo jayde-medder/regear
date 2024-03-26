@@ -4,11 +4,11 @@
  */
 export function up(knex) {
   return knex.schema.createTable('loans', (table) => {
-    table.integer('item_id').references('items.id')
-    table.integer('user_id').references('users.id')
+    table.integer('item_id') //.references('items.id')
+    table.integer('user_id') //.references('users.id')
     table.date('date_out')
     table.date('date_in')
-    table.integer('request_id').references('requests.id')
+    table.integer('request_id') //.references('requests.id')
   })
 }
 

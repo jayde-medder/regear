@@ -6,7 +6,7 @@ export function up(knex) {
   return knex.schema.createTable('categories', (table) => {
     table.increments('id').primary()
     table.string('name')
-    table.integer('parent_id').references('categories.id')
+    table.integer('parent_id') //.references('categories.id')
   })
 }
 

@@ -1,0 +1,95 @@
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+export async function seed(knex) {
+  await knex('items').insert([
+    {
+      id: 1,
+      item_name: 'Digital Mixer MX-500',
+      description:
+        'Professional 16-channel digital mixer with built-in effects',
+      date_added: '2023-10-05',
+      weight: 3.5,
+      location: 'Shelf 1',
+      owner_id: 1,
+      image_src: '/images/items/mx-500.jpeg',
+      is_borrowable: true,
+      is_claimable: false,
+    },
+    {
+      id: 2,
+      item_name: 'Electronic Drum Kit E-5000',
+      description: 'High-quality electronic drum kit with mesh heads',
+      date_added: '2023-09-05',
+      weight: 10.0,
+      location: 'Shelf 2',
+      owner_id: 1,
+      image_src: '/images/items/E-5000.jpeg',
+      is_borrowable: true,
+      is_claimable: false,
+    },
+    {
+      id: 3,
+      item_name: 'Studio Headphones HD-200',
+      description:
+        'Closed-back studio headphones with accurate sound reproduction',
+      date_added: '2023-01-05',
+      weight: 0.2,
+      location: 'Shelf 3',
+      owner_id: 1,
+      image_src: '/images/items/HD-200.jpeg',
+      is_borrowable: true,
+      is_claimable: true,
+    },
+    {
+      id: 4,
+      item_name: '9V Adapters',
+      description:
+        'Polarity swapped to centre negative @ Re:Gear, 2A - will power a long daisy chain of pedals',
+      date_added: '2024-01-05',
+      weight: 0.2,
+      location: 'Shelf 3',
+      owner_id: 1,
+      image_src: '/images/items/9V.jpg',
+      is_borrowable: false,
+      is_claimable: true,
+    },
+    {
+      id: 5,
+      item_name: 'Kindles',
+      description: 'Revived @ Re:Gear!',
+      date_added: '2024-01-05',
+      weight: 0.2,
+      location: 'Shelf 3',
+      owner_id: 1,
+      image_src: '/images/items/Kindle.jpg',
+      is_borrowable: true,
+      is_claimable: true,
+    },
+    {
+      id: 6,
+      item_name: 'GR3750 Risograph',
+      description: 'Needs fixing. Send a request for more details',
+      date_added: '2024-01-05',
+      weight: 0.2,
+      location: 'Shelf 3',
+      owner_id: 1,
+      image_src: '/images/items/Riso.jpg',
+      is_borrowable: true,
+      is_claimable: false,
+    },
+    {
+      id: 7,
+      item_name: 'LED neon strip lights',
+      description: 'Please send us a request if you have a use for these!',
+      date_added: '2024-01-05',
+      weight: 0.2,
+      location: 'Shelf 3',
+      owner_id: 1,
+      image_src: '/images/items/LED.jpg',
+      is_borrowable: false,
+      is_claimable: true,
+    },
+  ])
+}

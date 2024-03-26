@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 export async function seed(knex) {
-  await knex('items').insert([
+  await knex('item').insert([
     {
       id: 1,
       item_name: 'Digital Mixer MX-500',

@@ -7,6 +7,8 @@ export function up(knex) {
     table.increments('id').primary()
     table.string('name')
     table.string('color')
+    table.integer('parent_id').unsigned()
+    table.foreign('parent_id').references('id').inTable('tag')
   })
 }
 

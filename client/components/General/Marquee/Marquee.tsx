@@ -33,7 +33,7 @@ export default function Marquee() {
               />
             </span>
             <span className={styles['item-text']}>
-              40 ITEMS AVAILABLE IN OUR HARDWARE LIBRARY
+              40 ITEMS READY TO <b>BORROW</b>
             </span>
             <span className={styles['img-wrapper']}>
               <img
@@ -73,7 +73,7 @@ export default function Marquee() {
               />
             </span>
             <span className={styles['item-text']}>
-              40 ITEMS AVAILABLE IN OUR HARDWARE LIBRARY
+              40 ITEMS READY TO <b>BORROW</b>
             </span>
             <span className={styles['img-wrapper']}>
               <img

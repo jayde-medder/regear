@@ -1,5 +1,5 @@
 import styles from './Blog.module.css'
-import { Post } from '../../../models/posts'
+import { Post } from '../../../models/post'
 
 interface PostProps {
   post: Post

@@ -1,15 +1,15 @@
 import { Router } from 'express'
-import * as db from '../db/posts'
+import * as db from '../db/post'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    const posts = await db.getAllPosts()
-    res.json({ posts })
+    const post = await db.getAllPosts()
+    res.json({ post })
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Cannot get posts' })
+    res.status(500).json({ message: 'Cannot get post' })
   }
 })
 

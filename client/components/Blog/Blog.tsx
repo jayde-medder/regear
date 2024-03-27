@@ -5,7 +5,7 @@ import { getAllPosts } from '../../apis/apiPosts'
 import BlogPost from './BlogPost'
 
 function Blog() {
-  const { data: posts, isLoading, isError } = useQuery(['posts'], getAllPosts)
+  const { data: posts, isLoading, isError } = useQuery(['post'], getAllPosts)
 
   if (isError) {
     return (

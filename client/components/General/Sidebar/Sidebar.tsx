@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'usehooks-ts'
-import { Recycle, Images, Boxes, Info, Bell } from 'lucide-react'
+import { Recycle, Images, Boxes, Info, Bell, Menu } from 'lucide-react'
 import { SidebarItems } from 'models/sidebarItems.ts'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -22,7 +22,9 @@ export function Sidebar() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button>Open Sidebar</Button>
+        <Button size="icon" variant="ghost" className="fixed top-2 right-3">
+          <Menu size={20} />
+        </Button>
       </SheetTrigger>
       <SheetContent>
         <div className="h-full px-3 py-4">

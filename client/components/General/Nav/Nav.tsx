@@ -1,28 +1,30 @@
 import { Link, useLocation } from 'react-router-dom'
-import styles from './Nav.module.css'
+import { Button } from '@/components/ui/button'
 import { IfAuthenticated } from '../Authenticated/Authenticated'
+import Sidebar from '../Sidebar/Sidebar'
 
 function Nav() {
   const location = useLocation()
 
   return (
-    <div className={styles.header}>
-      <div className={styles.wrapper}>
+    <div className="flex justify-between sticky">
+      <div className="p-4">
         <Link to={'/'}>
-          <img id={styles.logo} src="/images/Logo.png" alt="Re:Gear Logo" />
+          <img className="h-10" src="/images/Logo.png" alt="Re:Gear Logo" />
         </Link>
       </div>
       {location.pathname !== '/inventory' && (
         <IfAuthenticated>
-          <div className={styles.wrapper}>
+          <div className="p-4">
             <Link to={'/inventory'}>
-              <button id={styles['inventory-button']}>
-                GO TO INVENTORY &gt;&gt;
-              </button>
+              <Button>Inventory</Button>
             </Link>
           </div>
         </IfAuthenticated>
       )}
+      <div className="p-4">
+        <Sidebar />
+      </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { Route, createRoutesFromElements } from 'react-router-dom'
-import App from './components/App/App'
+import App from './App'
 import Home from './components/Home/Home'
 import Inventory from './components/Inventory/Inventory'
 import About from './components/About/About'

@@ -1,5 +1,5 @@
 import Nav from '../Nav/Nav'
-import Sidebar from '../General/Sidebar/Sidebar'
+import Sidebar from '../components/General/Sidebar/Sidebar'
 function About() {
   return <p>About!</p>
 }

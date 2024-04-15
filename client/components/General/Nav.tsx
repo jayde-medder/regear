@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { IfAuthenticated } from '../Authenticated/Authenticated'
-import Sidebar from '../Sidebar/Sidebar'
+import { IfAuthenticated } from './Authenticated'
+import Sidebar from './Sidebar/Sidebar'
 
 function Nav() {
   const location = useLocation()

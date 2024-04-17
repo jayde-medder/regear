@@ -1,5 +1,5 @@
-import { Item } from '../../../models/inventory'
-import ItemListing from './ItemListing'
+import { Item } from '../../../../models/inventory'
+import ItemListing from '../ItemListing'
 
 interface props {
   inventory: Item[]

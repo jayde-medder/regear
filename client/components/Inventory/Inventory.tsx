@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import { getInventoryList } from '../../apis/apiInventory'
 import { Item } from '../../../models/inventory'
 import { useEffect, useState } from 'react'
-import AlphabeticalDisplay from './AlphabeticalDisplay'
-import DateAddedDisplay from './DateAddedDisplay'
-import ItemSearchBar from './ItemSearchBar'
-import Keywords from './Keywords'
-import { SortCombobox } from './SortCombobox'
+import AlphabeticalDisplay from './Sort By/AlphabeticalDisplay'
+import DateAddedDisplay from './Sort By/DateAddedDisplay'
+import ItemSearchBar from './Search/ItemSearchBar'
+import Keywords from './Search/Keywords'
+import { SortCombobox } from './Sort By/SortCombobox'
+import { SearchCommand } from './Search/SearchCommand'
 
 function Inventory() {
   //gets array of items in the inventory with a reduced properties list
@@ -107,6 +108,9 @@ function Inventory() {
         itemOrder={itemOrder}
         handleSelectChange={handleSelectChange}
       />
+      <div className="my-10">
+        <SearchCommand />
+      </div>
       <ItemSearchBar
         searchText={searchText}
         handleSubmit={handleSubmit}

@@ -1,6 +1,5 @@
-import { CompleteItem, Item } from '../../../models/inventory'
-import ItemListing from './ItemListing'
-import styles from './AlphabeticalDisplay.module.css'
+import { CompleteItem, Item } from '../../../../models/inventory'
+import ItemListing from '../ItemListing'
 interface props {
   inventory: Item[] | CompleteItem[]
 }

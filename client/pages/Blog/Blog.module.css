@@ -1,0 +1,41 @@
+.blog{
+  margin: 20px;
+  margin-bottom: 60px;
+  padding: 0px 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.blog-post {
+  margin: 40px;
+  padding: 10px;
+}
+
+
+.title {
+  margin-top: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.date {
+  font-weight: 200;
+  color: #555;
+}
+
+.text {
+  line-height: 1.5;
+}
+
+.featured .title{
+  font-size: 2.2em;
+  font-weight: bold;
+}
+
+.blog-hr{
+  margin: 0 50px;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+

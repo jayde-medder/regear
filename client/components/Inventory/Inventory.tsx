@@ -1,16 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
-import styles from './Inventory.module.css'
 import { getInventoryList } from '../../apis/apiInventory'
 import { Item } from '../../../models/inventory'
 import { useEffect, useState } from 'react'
-import ItemOrder from './ItemOrder/ItemDisplayForm'
-import CategoryDisplay from './CategoryDisplay/CategoryDisplay'
-import AlphabeticalDisplay from './AlphabeticalDisplay/AlphabeticalDisplay'
-import DateAddedDisplay from './DateAddedDisplay/DateAddedDisplay'
-import ItemSearchBar from './ItemSearchBar/ItemSearchBar'
-import e from 'express'
-import Keywords from './Keywords/Keywords'
-import CategorySelect from './CategorySelect/CategorySelect'
+import AlphabeticalDisplay from './Sort By/AlphabeticalDisplay'
+import DateAddedDisplay from './Sort By/DateAddedDisplay'
+import ItemSearchBar from './Search/ItemSearchBar'
+import Keywords from './Search/Keywords'
+import { SortCombobox } from './Sort By/SortCombobox'
+import { SearchCommand } from './Search/SearchCommand'
 
 function Inventory() {
   //gets array of items in the inventory with a reduced properties list
@@ -30,14 +27,14 @@ function Inventory() {
   }
 
   //manages state for how inventory list is displayed
-  const [itemOrder, setItemOrder] = useState<string>('A-Z')
+  const [itemOrder, setItemOrder] = useState<string>('date added')
   // sets the order of the item list
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setItemOrder(event.target.value)
+  const handleSelectChange = (value: string) => {
+    setItemOrder(value)
   }
 
   //manages state for filtered inventory list determined by keywords, and checkbox selections
-  const [filteredInventory, setFilteredInventory] = useState<Item[] | any>([])
+  const [filteredInventory, setFilteredInventory] = useState<Item[]>([])
 
   //manages keywords added via searchbar
   const [keywords, setKeywords] = useState<string[]>([])
@@ -106,11 +103,14 @@ function Inventory() {
     )
 
   return (
-    <>
-      <ItemOrder
+    <div className="m-10">
+      <SortCombobox
         itemOrder={itemOrder}
         handleSelectChange={handleSelectChange}
       />
+      <div className="my-10">
+        <SearchCommand />
+      </div>
       <ItemSearchBar
         searchText={searchText}
         handleSubmit={handleSubmit}
@@ -118,18 +118,15 @@ function Inventory() {
       />
 
       <Keywords keywords={keywords} handleClick={removeKeyword} />
-      <div className={styles['inventory']}>
-        {filteredInventory && itemOrder === 'A-Z' && (
+      <div className="">
+        {filteredInventory && itemOrder === 'a-z' && (
           <AlphabeticalDisplay inventory={filteredInventory} />
         )}
-        {filteredInventory && itemOrder === 'Date added' && (
+        {filteredInventory && itemOrder === 'date added' && (
           <DateAddedDisplay inventory={filteredInventory} />
         )}
-        {filteredInventory && itemOrder === 'Category' && (
-          <CategoryDisplay inventory={filteredInventory} />
-        )}
       </div>
-    </>
+    </div>
   )
 }
 

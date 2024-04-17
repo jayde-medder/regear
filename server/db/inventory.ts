@@ -6,7 +6,9 @@ import { Knex } from 'knex'
 const db = connection
 
 export async function getAllInventoryList(): Promise<Item[]> {
-  const inventoryList = await db('items')
+  const inventory = await db('item').select('*')
+  return inventory
+  /*   const inventoryList = await db('item')
     .join('categories', 'items.category_id', 'categories.id')
     .select(
       'items.id',
@@ -26,7 +28,7 @@ export async function getAllInventoryList(): Promise<Item[]> {
       return item
     })
   )
-  return inventoryWithRootParent
+  return inventoryWithRootParent */
 }
 
 //function to find root category given a category

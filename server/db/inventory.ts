@@ -1,6 +1,6 @@
 import connection from './connection'
-import { Item, NewItem } from '../../models/inventory'
-import { Category } from '../../models/categories'
+import { Item, NewItem } from '../../models/item'
+import { Tag } from '../../models/tag'
 import { Knex } from 'knex'
 
 const db = connection
@@ -32,20 +32,16 @@ export async function getAllInventoryList(): Promise<Item[]> {
 }
 
 //function to find root category given a category
-async function getRootParentCategoryName(
+async function getRootParentTagName(
   knex: Knex,
   categoryId: number
 ): Promise<string> {
-  let currentCategory: Category = await knex('categories')
-    .where('id', categoryId)
-    .first()
+  let currentTag: Tag = await knex('tag').where('id', categoryId).first()
 
-  while (currentCategory && currentCategory.parent_id) {
-    currentCategory = await knex('categories')
-      .where('id', currentCategory.parent_id)
-      .first()
+  while (currentTag && currentTag.parent_id) {
+    currentTag = await knex('tag').where('id', currentTag.parent_id).first()
   }
-  return currentCategory.name
+  return currentTag.name
 }
 
 export async function getCompleteInventory() {
@@ -60,9 +56,9 @@ export async function getCompleteInventory() {
   return inventoryList
 }
 
-export async function getAllCategories() {
-  const categories = await db('categories').select('*')
-  return categories
+export async function getAllTags(): Promise<Tag[]> {
+  const tags = await db('tag').select('*')
+  return tags
 }
 
 export async function addNewInventoryItem(itemData: NewItem) {

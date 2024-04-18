@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import { getAllInventory } from '../../../apis/apiInventory'
+import { getAllInventory } from '../../../apis/apiItem'
 import { Link } from 'react-router-dom'
 
 function InventoryManager() {

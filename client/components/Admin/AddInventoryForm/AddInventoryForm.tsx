@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import StatusBar from '../../General/StatusBars/StatusBar'
-import { NewItem } from '../../../../models/inventory'
-import {
-  addNewInventoryItem,
-  getAllCategories,
-} from '../../../apis/apiInventory'
+import { NewItem } from '../../../../models/item'
+import { addNewInventoryItem, getAllTags } from '../../../apis/apiItem'
 import { useQuery } from '@tanstack/react-query'
 
 export default function AddInventoryForm() {
@@ -12,7 +9,7 @@ export default function AddInventoryForm() {
     data: categories,
     isLoading,
     isError,
-  } = useQuery(['categories'], () => getAllCategories())
+  } = useQuery(['tag'], () => getAllTags())
   // Define state variables to store form inputs
   const [itemName, setItemName] = useState('')
   const [faulty, setFaulty] = useState(false)

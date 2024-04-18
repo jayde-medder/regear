@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { getInventoryList } from '../../apis/apiInventory'
-import { Item } from '../../../models/inventory'
+import { getItemList } from '../../apis/apiItem'
+import { Item } from '../../../models/item'
 import { useEffect, useState } from 'react'
 import AlphabeticalDisplay from './Sort By/AlphabeticalDisplay'
 import DateAddedDisplay from './Sort By/DateAddedDisplay'
@@ -15,7 +15,7 @@ function Inventory() {
     data: inventory,
     isLoading,
     isError,
-  } = useQuery(['inventory'], () => getInventoryList())
+  } = useQuery(['inventory'], () => getItemList())
 
   //manages state for string value based on search bar
   const [searchText, setSearchText] = useState<string>('')

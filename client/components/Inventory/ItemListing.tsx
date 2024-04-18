@@ -1,4 +1,4 @@
-import { Item } from '../../../models/inventory'
+import { Item } from '../../../models/item'
 import { useState } from 'react'
 interface props {
   item: Item

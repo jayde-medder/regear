@@ -7,42 +7,71 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { getAllTags } from '@/apis/apiItem'
 
 export function SearchCommand() {
+  const {
+    data: tags,
+    isLoading,
+    isError,
+  } = useQuery(['tag'], () => getAllTags())
+
   const [open, setOpen] = useState<boolean>(false)
+  const commandRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        commandRef.current &&
+        !commandRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
+
+  const handleInputClick = () => {
+    setOpen(true)
+  }
 
   return (
-    <Command className="rounded-lg border">
-      <CommandInput placeholder="Type a command or search..." />
-      {open && (
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <span>Calendar</span>
-            </CommandItem>
-            <CommandItem>
-              <span>Search Emoji</span>
-            </CommandItem>
-            <CommandItem>
-              <span>Calculator</span>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <span>Profile</span>
-            </CommandItem>
-            <CommandItem>
-              <span>Billing</span>
-            </CommandItem>
-            <CommandItem>
-              <span>Settings</span>
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      )}
-    </Command>
+    <div ref={commandRef}>
+      <Command className="rounded-lg border">
+        <CommandInput placeholder="Search..." onClick={handleInputClick} />
+        {open && (
+          <CommandList>
+            {isLoading && <span>Loading...</span>}
+            {isError && <span>Error fetching tags.</span>}
+            {!isLoading && !isError && tags && (
+              <>
+                {tags.length === 0 && (
+                  <CommandEmpty>No results found.</CommandEmpty>
+                )}
+                {tags.length > 0 && (
+                  <>
+                    <CommandGroup heading="Tags">
+                      {tags.map((tag) => (
+                        <CommandItem key={tag.id}>
+                          <span>{tag.name}</span>
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                    <CommandSeparator />
+                  </>
+                )}
+              </>
+            )}
+          </CommandList>
+        )}
+      </Command>
+    </div>
   )
 }

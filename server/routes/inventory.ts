@@ -24,13 +24,13 @@ router.get('/admin', async (req, res) => {
   }
 })
 
-router.get('/categories', async (req, res) => {
+router.get('/tag', async (req, res) => {
   try {
-    const categories = await db.getAllCategories()
-    res.json({ categories })
+    const tags = await db.getAllTags()
+    res.json({ tags })
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Cannot get categories' })
+    res.status(500).json({ message: 'Cannot get tags' })
   }
 })
 

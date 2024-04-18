@@ -9,9 +9,7 @@ function App() {
       <Nav />
       <Marquee />
       <Sidebar />
-      <body>
-        <Outlet />
-      </body>
+      <Outlet />
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import { Item } from '../../../models/item'
-import { useState } from 'react'
 interface props {
   item: Item
 }
@@ -13,9 +12,6 @@ export default function ItemListing({ item }: props) {
         </div>
         <div>
           <h3>{item.name}</h3>
-        </div>
-        <div className="">
-          <h3>Category: {item.root_category}</h3>
         </div>
       </div>
     </>

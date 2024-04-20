@@ -39,6 +39,12 @@ export default {
     connection: {
       filename: '/app/storage/prod.sqlite3',
     },
+    migrations: {
+      directory: Path.join(__dirname, 'migrations'),
+    },
+    seeds: {
+      directory: Path.join(__dirname, 'seeds'),
+    },
     pool: {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },

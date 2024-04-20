@@ -77,7 +77,13 @@ export function SearchCommand() {
   return (
     <>
       <div ref={commandRef}>
-        <Command className="rounded-lg border">
+        <Command
+          className="rounded-lg border"
+          filter={(value, search) => {
+            if (value.includes(search)) return 1
+            return 0
+          }}
+        >
           <CommandInput
             placeholder="Search..."
             onValueChange={handleValueChange}

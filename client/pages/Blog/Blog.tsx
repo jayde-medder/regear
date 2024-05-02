@@ -19,7 +19,7 @@ function Blog() {
   }
 
   return (
-    <div>
+    <div className="bg-card border shadow-sm rounded-lg overflow-hidden px-6 py-10 mb-4">
       {posts.map((post, index) => (
         <React.Fragment key={post.id}>
           <BlogPost key={post.id} post={post} />

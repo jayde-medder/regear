@@ -1,4 +1,4 @@
-import { useState } from 'react'
+/* import { useState } from 'react'
 import StatusBar from '../../General/StatusBars/StatusBar'
 import { NewItem } from '../../../../models/item'
 import { addNewInventoryItem, getAllTags } from '../../../apis/apiItem'
@@ -96,7 +96,6 @@ export default function AddInventoryForm() {
   if (isLoading)
     return (
       <>
-        {/* todo add loading animation */}
         <h2>...Loading... </h2>
       </>
     )
@@ -234,3 +233,4 @@ export default function AddInventoryForm() {
     </div>
   )
 }
+ */

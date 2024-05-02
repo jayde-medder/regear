@@ -15,8 +15,8 @@ function BlogPost(props: PostProps) {
 
   return (
     <div
-      className={`bg-muted border-gray-300 border shadow-sm rounded-md overflow-hidden px-6 py-10 mb-4 ${
-        post.isPinned ? 'border border-black' : ''
+      className={`rounded-md overflow-hidden px-6 py-16 mb-8 ${
+        post.isPinned ? 'border border-black shadow-md' : ''
       }`}
     >
       <p className="text-sm mt-2 ml-4">{formattedDate}</p>

@@ -113,13 +113,12 @@ export function NavMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="border-black border-l border-b border-r rounded-br-md ">
-          <Link to={'/inventory'}>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} font-semibold`}
-            >
-              View All Items
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuLink
+            className={`${navigationMenuTriggerStyle()} font-semibold`}
+            asChild
+          >
+            <Link to={'/inventory'}>View All Items</Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/command'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getAllTags, getParentTagPath } from '@/apis/apiItem'
+import { getAllTags, getParentTagPath } from '@/apis/apiTag'
 
 export function SearchCommand() {
   const {
@@ -77,7 +77,7 @@ export function SearchCommand() {
   return (
     <div ref={commandRef} className="flex-grow">
       <Command
-        className="rounded-lg border "
+        className="rounded-lg border"
         filter={(value, search) => {
           if (value.includes(search)) return 1
           return 0

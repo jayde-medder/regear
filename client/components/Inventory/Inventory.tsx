@@ -47,7 +47,7 @@ function Inventory() {
           handleSelectChange={handleSelectChange}
         />
       </div>
-      <div className="flex flex-wrap justify-around w-full z-0 absolute mt-20">
+      <div className="flex flex-wrap justify-between w-full z-0 absolute mt-20">
         {inventory && itemOrder === 'a-z' && (
           <AlphabeticalDisplay inventory={inventory} />
         )}

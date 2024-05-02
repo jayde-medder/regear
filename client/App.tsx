@@ -9,7 +9,7 @@ function App() {
         <Nav />
         <Sidebar />
       </div>
-      <div className="px-12 py-8">
+      <div className="px-14 py-8">
         <Outlet />
       </div>
     </>

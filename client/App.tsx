@@ -1,16 +1,18 @@
 import Nav from './components/General/Nav.tsx'
 import Sidebar from './components/General/Sidebar/Sidebar.tsx'
-import Marquee from './components/General/Marquee.tsx'
 import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
-    <div>
-      <Nav />
-      <Marquee />
-      <Sidebar />
-      <Outlet />
-    </div>
+    <>
+      <div className="flex">
+        <Nav />
+        <Sidebar />
+      </div>
+      <div className="p-12">
+        <Outlet />
+      </div>
+    </>
   )
 }
 

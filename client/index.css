@@ -1,5 +1,127 @@
 /* ShadCn edits this file during initialisation. go to https://ui.shadcn.com/themes to customise a theme or just do it here manually :) */
 
+/* Test Söhne Regular */
+@font-face {
+  font-family: 'Test Söhne';
+  src: url('/fonts/Test%20Söhne/test-soehne-buch.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Test Söhne Italic */
+@font-face {
+  font-family: 'Test Söhne';
+  src: url('/fonts/Test%20Söhne/test-soehne-buch-kursiv.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Test Söhne Bold */
+@font-face {
+  font-family: 'Test Söhne';
+  src: url('/fonts/Test%20Söhne/test-soehne-fett.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Test Söhne Bold */
+@font-face {
+  font-family: 'Test Söhne';
+  src: url('/fonts/Test%20Söhne/test-soehne-fett-kursiv.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Test Söhne Light */
+@font-face {
+  font-family: 'Test Söhne';
+  src: url('/fonts/Test%20Söhne/test-soehne-leicht.woff2') format('woff2');
+  font-weight: 300; /* Light font weight */
+  font-style: normal;
+}
+
+/* Test Söhne Light Italic */
+@font-face {
+  font-family: 'Test Söhne';
+  src: url('/fonts/Test%20Söhne/test-soehne-leicht-kursiv.woff2') format('woff2');
+  font-weight: 300; /* Light font weight */
+  font-style: italic;
+}
+
+/* Test Söhne Breit Medium */
+@font-face {
+  font-family: 'Test Söhne';
+  src: url('/fonts/Test%20Söhne/test-soehne-kraftig.woff2') format('woff2');
+  font-weight: 500; /* Medium font weight */
+  font-style: normal;
+}
+
+/* Test Söhne Breit Medium Italic */
+@font-face {
+  font-family: 'Test Söhne';
+  src: url('/fonts/Test%20Söhne/test-soehne-kraftig-kursiv.woff2') format('woff2');
+  font-weight: 500; /* Medium font weight */
+  font-style: italic;
+}
+
+/* Test Söhne Breit Semi-Bold */
+@font-face {
+  font-family: 'Test Söhne Breit';
+  src: url('/fonts/Test%20Söhne%20Breit/test-soehne-breit-halbfett.woff2') format('woff2');
+  font-weight: 600; /* Semi-bold font weight */
+  font-style: normal;
+}
+
+/* Test Söhne Mono Regular */
+@font-face {
+  font-family: 'Test Söhne Mono';
+  src: url('/fonts/Test%20Söhne%20Mono/test-soehne-mono-buch.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Test Söhne Mono Italic */
+@font-face {
+  font-family: 'Test Söhne Mono';
+  src: url('/fonts/Test%20Söhne%20Mono/test-soehne-mono-buch-kursiv.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Test Söhne Mono Bold */
+@font-face {
+  font-family: 'Test Söhne Mono';
+  src: url('/fonts/Test%20Söhne%20Mono/test-soehne-mono-fett.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Test Söhne Mono Light */
+@font-face {
+  font-family: 'Test Söhne Mono';
+  src: url('/fonts/Test%20Söhne%20Mono/test-soehne-mono-leicht.woff2') format('woff2');
+  font-weight: 300; /* Light font weight */
+  font-style: normal;
+}
+
+/* Test Söhne Mono Light Italic */
+@font-face {
+  font-family: 'Test Söhne Mono';
+  src: url('/fonts/Test%20Söhne%20Mono/test-soehne-mono-leicht-kursiv.woff2') format('woff2');
+  font-weight: 300; /* Light font weight */
+  font-style: italic;
+}
+
+/* Test Söhne Mono Medium */
+@font-face {
+  font-family: 'Test Söhne Mono';
+  src: url('/fonts/Test%20Söhne%20Mono/test-soehne-mono-halbfett.woff2') format('woff2');
+  font-weight: 600; /* Medium font weight */
+  font-style: normal;
+}
+
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,11 +152,11 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
+    --border: 0 100% 0%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 1rem;
+    --radius: 0.3rem;
   }
 
   .dark {
@@ -74,5 +196,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Test Söhne Mono', sans-serif;
   }
+  
 }

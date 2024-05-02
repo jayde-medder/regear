@@ -77,7 +77,7 @@ export function SearchCommand() {
   return (
     <div ref={commandRef} className="flex-grow">
       <Command
-        className="rounded-lg border"
+        className="rounded-lg border "
         filter={(value, search) => {
           if (value.includes(search)) return 1
           return 0
@@ -89,7 +89,7 @@ export function SearchCommand() {
           onClick={handleInputClick}
         />
         {open && searchValue === '' && (
-          <CommandList>
+          <CommandList className="transition duration-1000">
             {isLoading && <CommandEmpty>Loading...</CommandEmpty>}
             {isError && <CommandEmpty>Error fetching tags.</CommandEmpty>}
             {!isLoading && !isError && tags && (

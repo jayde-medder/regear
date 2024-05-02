@@ -16,7 +16,7 @@ export function SidebarButton({
   return (
     <Button
       variant="ghost"
-      className={cn('gap-2 justify-start', className)}
+      className={cn('gap-6 justify-start', className)}
       {...props}
     >
       {Icon && <Icon size={20} />}

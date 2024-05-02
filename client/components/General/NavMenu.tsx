@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
 import {
@@ -8,6 +9,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 
 import { HeartHandshake, HandHelping, Wrench } from 'lucide-react'
@@ -17,7 +19,10 @@ export function NavMenu() {
     <NavigationMenu className="w-full">
       <NavigationMenuList>
         <NavigationMenuItem className="border-black border-l border-b rounded-bl-md">
-          <NavigationMenuTrigger>Fix</NavigationMenuTrigger>
+          <NavigationMenuTrigger>
+            Fix
+            <Wrench className="h-3" />
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -49,7 +54,10 @@ export function NavMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="border-black border-l border-b">
-          <NavigationMenuTrigger>Borrow</NavigationMenuTrigger>
+          <NavigationMenuTrigger>
+            Borrow
+            <HeartHandshake className="h-3" />
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <NavigationMenuLink asChild>
@@ -70,8 +78,11 @@ export function NavMenu() {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem className="border-black border-l border-b border-r rounded-br-md ">
-          <NavigationMenuTrigger>Claim</NavigationMenuTrigger>
+        <NavigationMenuItem className="border-black border-l border-b">
+          <NavigationMenuTrigger>
+            Claim
+            <HandHelping className="h-3" />
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -100,6 +111,15 @@ export function NavMenu() {
               </ListItem>
             </ul>
           </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem className="border-black border-l border-b border-r rounded-br-md ">
+          <Link to={'/inventory'}>
+            <NavigationMenuLink
+              className={`${navigationMenuTriggerStyle()} font-semibold`}
+            >
+              View All Items
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

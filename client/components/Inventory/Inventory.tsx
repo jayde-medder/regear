@@ -39,7 +39,7 @@ function Inventory() {
     )
 
   return (
-    <div className="m-10 relative">
+    <div className="relative">
       <div className="flex w-full gap-4 z-10 absolute">
         <SearchCommand />
         <SortCombobox
@@ -47,7 +47,7 @@ function Inventory() {
           handleSelectChange={handleSelectChange}
         />
       </div>
-      <div className="flex flex-wrap justify-between w-full z-0 absolute mt-16">
+      <div className="flex flex-wrap justify-around w-full z-0 absolute mt-20">
         {inventory && itemOrder === 'a-z' && (
           <AlphabeticalDisplay inventory={inventory} />
         )}

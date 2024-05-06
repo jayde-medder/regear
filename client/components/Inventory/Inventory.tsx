@@ -1,8 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getItemList } from '../../apis/apiItem'
 import { useState } from 'react'
-import AlphabeticalDisplay from './Sort By/AlphabeticalDisplay'
-import DateAddedDisplay from './Sort By/DateAddedDisplay'
+import ItemListing from './ItemListing'
 import { SortCombobox } from './Sort By/SortCombobox'
 import { SearchCommand } from './Search/SearchCommand'
 
@@ -38,22 +37,32 @@ function Inventory() {
       </>
     )
 
+  const sortedInventory =
+    itemOrder === 'a-z'
+      ? inventory.slice().sort((a, b) => a.name.localeCompare(b.name))
+      : inventory
+          .slice()
+          .sort(
+            (a, b) =>
+              new Date(a.date_added).getTime() -
+              new Date(b.date_added).getTime()
+          )
+
   return (
     <div className="relative">
-      <div className="flex w-full gap-4 z-10 absolute">
+      <div className="flex w-full p-1 gap-4 z-10 absolute">
         <SearchCommand />
         <SortCombobox
           itemOrder={itemOrder}
           handleSelectChange={handleSelectChange}
         />
       </div>
-      <div className="flex flex-wrap justify-between w-full z-0 absolute mt-20">
-        {inventory && itemOrder === 'a-z' && (
-          <AlphabeticalDisplay inventory={inventory} />
-        )}
-        {inventory && itemOrder === 'date added' && (
-          <DateAddedDisplay inventory={inventory} />
-        )}
+      <div className="flex box-content flex-wrap z-0 absolute mt-14">
+        {sortedInventory.map((item) => (
+          <div key={item.id} className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-1">
+            <ItemListing key={item.id} item={item} />
+          </div>
+        ))}
       </div>
     </div>
   )

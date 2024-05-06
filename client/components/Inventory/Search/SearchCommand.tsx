@@ -89,7 +89,7 @@ export function SearchCommand() {
           onClick={handleInputClick}
         />
         {open && searchValue === '' && (
-          <CommandList className="transition duration-1000">
+          <CommandList className="transition-all duration-1000">
             {isLoading && <CommandEmpty>Loading...</CommandEmpty>}
             {isError && <CommandEmpty>Error fetching tags.</CommandEmpty>}
             {!isLoading && !isError && tags && (

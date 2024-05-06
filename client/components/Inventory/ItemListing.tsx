@@ -17,14 +17,22 @@ interface props {
 
 export default function ItemListing({ item }: props) {
   return (
-    <Card className="w-[250px] h-[430px] flex flex-col mb-4">
-      <CardHeader className="flex-grow">
+    <Card className="flex flex-col">
+      <CardHeader className="h-[120px] line-clamp-5 ">
         <CardTitle>{item.name}</CardTitle>
-        <CardDescription className="line-clamp-3">{item.desc}</CardDescription>
+        <CardDescription className="overflow-ellipsis overflow-clip">
+          {item.desc}
+        </CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow">
-        <img src={item.image_src} alt={item.name}></img>
-      </CardContent>
+      <div className="w-full flex justify-center items-center">
+        <CardContent className="w-full aspect-square">
+          <img
+            src={item.image_src}
+            alt={item.name}
+            className="w-[700px] h-full object-contain"
+          />
+        </CardContent>
+      </div>
       <CardFooter className="flex justify-between">
         {item.is_borrowable ? (
           <Button variant="secondary">

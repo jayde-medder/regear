@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import { getAllInventory } from '../../../apis/apiInventory'
+import { getItemList } from '../../../apis/apiItem'
 import { Link } from 'react-router-dom'
 
 function InventoryManager() {
@@ -8,7 +8,7 @@ function InventoryManager() {
     data: inventory,
     isLoading,
     isError,
-  } = useQuery(['adminInventory'], () => getAllInventory())
+  } = useQuery(['adminInventory'], () => getItemList())
 
   const [columnVisibility, setColumnVisibility] = useState<{
     [key: string]: boolean

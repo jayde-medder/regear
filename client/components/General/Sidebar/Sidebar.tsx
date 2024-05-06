@@ -24,7 +24,11 @@ export function Sidebar() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button size="icon" variant="ghost" className="fixed top-2 right-3">
+        <Button
+          size="icon"
+          variant="ghost"
+          className="border-black border fixed top-2 right-2"
+        >
           <Menu size={20} />
         </Button>
       </SheetTrigger>

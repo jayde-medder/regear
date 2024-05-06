@@ -2,7 +2,8 @@ import * as Path from 'node:path'
 import * as URL from 'node:url'
 import express from 'express'
 import postRoutes from './routes/post.ts'
-import inventoryRoutes from './routes/inventory.ts'
+import itemRoutes from './routes/item.ts'
+import tagRoutes from './routes/tag.ts'
 
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
@@ -13,7 +14,8 @@ server.use(express.static(Path.join(__dirname, 'public')))
 server.use(express.json())
 
 server.use('/api/v1/post', postRoutes)
-server.use('/api/v1/inventory', inventoryRoutes)
+server.use('/api/v1/item', itemRoutes)
+server.use('/api/v1/tag', tagRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))

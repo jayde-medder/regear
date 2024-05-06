@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./client/*"
+        "./client/*",
+        "./models/*"
       ]
     }
   }

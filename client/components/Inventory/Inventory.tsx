@@ -1,11 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import { getInventoryList } from '../../apis/apiInventory'
-import { Item } from '../../../models/inventory'
-import { useEffect, useState } from 'react'
-import AlphabeticalDisplay from './Sort By/AlphabeticalDisplay'
-import DateAddedDisplay from './Sort By/DateAddedDisplay'
-import ItemSearchBar from './Search/ItemSearchBar'
-import Keywords from './Search/Keywords'
+import { getItemList } from '../../apis/apiItem'
+import { useState } from 'react'
+import ItemListing from './ItemListing'
 import { SortCombobox } from './Sort By/SortCombobox'
 import { SearchCommand } from './Search/SearchCommand'
 
@@ -15,16 +11,7 @@ function Inventory() {
     data: inventory,
     isLoading,
     isError,
-  } = useQuery(['inventory'], () => getInventoryList())
-
-  //manages state for string value based on search bar
-  const [searchText, setSearchText] = useState<string>('')
-  const handleSearchTextChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSearchText(event.target.value)
-    console.log(`searchText ${searchText}`)
-  }
+  } = useQuery(['inventory'], () => getItemList())
 
   //manages state for how inventory list is displayed
   const [itemOrder, setItemOrder] = useState<string>('date added')
@@ -32,58 +19,6 @@ function Inventory() {
   const handleSelectChange = (value: string) => {
     setItemOrder(value)
   }
-
-  //manages state for filtered inventory list determined by keywords, and checkbox selections
-  const [filteredInventory, setFilteredInventory] = useState<Item[]>([])
-
-  //manages keywords added via searchbar
-  const [keywords, setKeywords] = useState<string[]>([])
-  //handles submission of string entered into search bar. Will add term to keywords array
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (searchText) {
-      setKeywords((prevKeywords) => [...prevKeywords, searchText])
-    }
-    setSearchText('')
-  }
-
-  const removeKeyword = (keyword: string) => {
-    setKeywords(keywords.filter((value) => value !== keyword))
-  }
-
-  //modifies the inventory based on the searchbar input
-  useEffect(() => {
-    if (inventory) {
-      let updatedInventory = [...inventory]
-      // Filter based on search bar text
-      if (searchText !== '') {
-        updatedInventory = updatedInventory.filter((item) =>
-          Object.values(item).some(
-            (value) =>
-              value &&
-              typeof value === 'string' &&
-              value.toLowerCase().includes(searchText.toLowerCase())
-          )
-        )
-      }
-
-      // Filter based on keywords
-      if (keywords.length > 0) {
-        updatedInventory = updatedInventory.filter((item) =>
-          keywords.every((keyword) =>
-            Object.values(item).some(
-              (value) =>
-                value &&
-                typeof value === 'string' &&
-                value.toLowerCase().includes(keyword.toLowerCase())
-            )
-          )
-        )
-      }
-
-      setFilteredInventory(updatedInventory)
-    }
-  }, [searchText, keywords, inventory])
 
   if (isError)
     return (
@@ -102,29 +37,32 @@ function Inventory() {
       </>
     )
 
-  return (
-    <div className="m-10">
-      <SortCombobox
-        itemOrder={itemOrder}
-        handleSelectChange={handleSelectChange}
-      />
-      <div className="my-10">
-        <SearchCommand />
-      </div>
-      <ItemSearchBar
-        searchText={searchText}
-        handleSubmit={handleSubmit}
-        handleSearchTextChange={handleSearchTextChange}
-      />
+  const sortedInventory =
+    itemOrder === 'a-z'
+      ? inventory.slice().sort((a, b) => a.name.localeCompare(b.name))
+      : inventory
+          .slice()
+          .sort(
+            (a, b) =>
+              new Date(a.date_added).getTime() -
+              new Date(b.date_added).getTime()
+          )
 
-      <Keywords keywords={keywords} handleClick={removeKeyword} />
-      <div className="">
-        {filteredInventory && itemOrder === 'a-z' && (
-          <AlphabeticalDisplay inventory={filteredInventory} />
-        )}
-        {filteredInventory && itemOrder === 'date added' && (
-          <DateAddedDisplay inventory={filteredInventory} />
-        )}
+  return (
+    <div className="relative">
+      <div className="flex w-full p-1 gap-4 z-10 absolute">
+        <SearchCommand />
+        <SortCombobox
+          itemOrder={itemOrder}
+          handleSelectChange={handleSelectChange}
+        />
+      </div>
+      <div className="flex box-content flex-wrap z-0 absolute mt-14">
+        {sortedInventory.map((item) => (
+          <div key={item.id} className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-1">
+            <ItemListing key={item.id} item={item} />
+          </div>
+        ))}
       </div>
     </div>
   )

@@ -1,4 +1,3 @@
-import styles from './Blog.module.css'
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getAllPosts } from '../../apis/apiPosts'
@@ -20,11 +19,11 @@ function Blog() {
   }
 
   return (
-    <div className={styles.blog}>
+    <div className="bg-card border shadow-sm rounded-lg overflow-hidden px-6 py-10 mb-4">
       {posts.map((post, index) => (
         <React.Fragment key={post.id}>
           <BlogPost key={post.id} post={post} />
-          {index !== posts.length - 1 && <hr className={styles['blog-hr']} />}
+          {index !== posts.length - 1}
         </React.Fragment>
       ))}
     </div>

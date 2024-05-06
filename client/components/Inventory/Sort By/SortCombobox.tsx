@@ -41,7 +41,7 @@ export function SortCombobox({ itemOrder, handleSelectChange }: Props) {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-52 h-[46px] justify-between"
         >
           Sort By: {itemOrder === 'date added' ? 'Date Added' : 'A-Z'}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />

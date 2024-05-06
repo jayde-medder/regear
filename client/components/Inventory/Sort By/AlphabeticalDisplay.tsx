@@ -1,4 +1,4 @@
-import { CompleteItem, Item } from '../../../../models/inventory'
+import { CompleteItem, Item } from '../../../../models/item'
 import ItemListing from '../ItemListing'
 interface props {
   inventory: Item[] | CompleteItem[]
@@ -10,7 +10,7 @@ export default function AlphabeticalDisplay({ inventory }: props) {
   return (
     <>
       {alphabeticalInventory.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
           <ItemListing item={item} />
         </div>
       ))}

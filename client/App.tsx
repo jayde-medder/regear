@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 function App() {
   return (
     <>
-      <div className="flex">
+      <div className="max-w-full overflow-hidden flex gap-2 p-2">
         <Nav />
         <Sidebar />
       </div>

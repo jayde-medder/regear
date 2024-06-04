@@ -3,6 +3,7 @@ export const darkMode = ['class']
 export const content = [
   './client/**/*.{ts,tsx}',
   './client/index.tsx',
+  './client/*.{ts,tsx}',
   './index.html',
 ]
 export const prefix = ''

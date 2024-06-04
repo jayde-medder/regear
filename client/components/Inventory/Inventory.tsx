@@ -57,7 +57,7 @@ function Inventory() {
           handleSelectChange={handleSelectChange}
         />
       </div>
-      <div className="flex box-content flex-wrap z-0 absolute mt-14">
+      <div className="flex flex-wrap z-0 absolute mt-14">
         {sortedInventory.map((item) => (
           <div key={item.id} className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-1">
             <ItemListing key={item.id} item={item} />

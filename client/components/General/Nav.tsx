@@ -4,7 +4,7 @@ import StatsMarquee from './StatsMarquee'
 
 function Nav() {
   return (
-    <div className="flex flex-col p-1 w-[calc(100%-50px)] border-black z-50">
+    <div className="relative w-full max-w-screen flex flex-1 flex-col border-black z-50">
       {/* top row of nav: logo, subheading, marquee */}
       <div className="flex flex-row border-black border-b">
         <div className="px-3 py-1 flex-none border-black border-r">
@@ -12,10 +12,10 @@ function Nav() {
             <img className="h-9" src="/images/Logo.png" alt="Re:Gear Logo" />
           </Link>
         </div>
-        <div className="px-2 py-1 min-w-56 text-xs border-black border-r">
+        <div className="flex-auto px-2 py-1 min-w-56 text-xs border-black border-r">
           recirculating electronics hardware in Ōtepoti Dunedin
         </div>
-        <div className="min-w-2 p-2 border-black border-r">
+        <div className="min-w-0 p-2 border-black border-r hidden sm:block">
           <div className="border-black border rounded-md">
             <StatsMarquee />
           </div>
@@ -25,15 +25,6 @@ function Nav() {
       <div className="flex justify-end">
         <NavMenu />
       </div>
-      {/* {location.pathname !== '/inventory' && (
-        <IfAuthenticated>
-          <div className="p-4">
-            <Link to={'/inventory'}>
-              <Button>Inventory</Button>
-            </Link>
-          </div>
-        </IfAuthenticated>
-      )} */}
     </div>
   )
 }

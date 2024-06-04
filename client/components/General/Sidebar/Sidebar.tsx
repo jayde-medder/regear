@@ -24,13 +24,15 @@ export function Sidebar() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="border-black border fixed top-2 right-2"
-        >
-          <Menu size={20} />
-        </Button>
+        <div className="w-max-content flex-none">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="flex-none w-10 z-50 relative top-0 right-0 border-black border"
+          >
+            <Menu size={20} />
+          </Button>
+        </div>
       </SheetTrigger>
       <SheetContent>
         <div className="h-full px-1 py-4">

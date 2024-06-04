@@ -1,18 +1,18 @@
-import * as Path from 'node:path'
-import * as URL from 'node:url'
+import { fileURLToPath } from 'url'
+import { dirname, join, resolve } from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
 
-import postRoutes from './routes/post.ts'
-import itemRoutes from './routes/item.ts'
-import tagRoutes from './routes/tag.ts'
+import postRoutes from './routes/post'
+import itemRoutes from './routes/item'
+import tagRoutes from './routes/tag'
 
-const __filename = URL.fileURLToPath(import.meta.url)
-const __dirname = Path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const server = express()
 
-server.use(express.static(Path.join(__dirname, 'public')))
+server.use(express.static(join(__dirname, 'public')))
 server.use(express.json())
 
 server.use('/api/v1/post', postRoutes)
@@ -20,10 +20,10 @@ server.use('/api/v1/item', itemRoutes)
 server.use('/api/v1/tag', tagRoutes)
 
 if (process.env.NODE_ENV === 'production') {
-  server.use(express.static(Path.resolve('public')))
-  server.use('/assets', express.static(Path.resolve('./dist/assets')))
+  server.use(express.static(resolve('public')))
+  server.use('/assets', express.static(resolve('./dist/assets')))
   server.get('*', (req, res) => {
-    res.sendFile(Path.resolve('./dist/index.html'))
+    res.sendFile(resolve('./dist/index.html'))
   })
 }
 

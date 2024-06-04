@@ -8,7 +8,7 @@ export default function StatsMarquee() {
       direction="left"
       reverse={false}
       pauseOnHover={true}
-      className=" border-black gap-[3rem] [--duration:30s]" // pass class to change gap or speed
+      className="border-black bg-black font-extralight text-white gap-[3rem] [--duration:30s]" // pass class to change gap or speed
       innerClassName="gap-[3rem] [--gap:3rem]" // pass class to change gap or speed
     >
       <div className="flex flex-row gap-2 items-center">
@@ -16,7 +16,7 @@ export default function StatsMarquee() {
           <img
             src="/images/svg/about.svg"
             alt="About Re:Gear Icon"
-            className="h-6"
+            className="h-5"
           />
         </div>
         <p className="text-sm">30KG OF HARDWARE REPURPOSED</p>
@@ -24,7 +24,7 @@ export default function StatsMarquee() {
           <img
             src="/images/svg/about.svg"
             alt="About Re:Gear Icon"
-            className="h-6"
+            className="h-5"
           />
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function StatsMarquee() {
           <img
             src="/images/svg/onlinecom.svg"
             alt="About Re:Gear Icon"
-            className="h-6"
+            className="h-5"
           />
         </div>
         <p className="text-sm">
@@ -43,7 +43,7 @@ export default function StatsMarquee() {
           <img
             src="/images/svg/onlinecom.svg"
             alt="About Re:Gear Icon"
-            className="h-6"
+            className="h-5"
           />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
 import {
@@ -15,8 +15,11 @@ import {
 import { HeartHandshake, HandHelping, Wrench } from 'lucide-react'
 
 export function NavMenu() {
+  const location = useLocation()
+  const showViewAllItemsLink = location.pathname !== '/inventory'
+
   return (
-    <NavigationMenu className="w-full">
+    <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem className="border-black border-l border-b rounded-bl-md">
           <NavigationMenuTrigger>
@@ -78,7 +81,13 @@ export function NavMenu() {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem className="border-black border-l border-b">
+        <NavigationMenuItem
+          className={`border-black border-l border-b border-r  ${
+            showViewAllItemsLink
+              ? 'rounded-br-md sm:rounded-br-none'
+              : 'rounded-br-md sm:rounded-br-md'
+          }`}
+        >
           <NavigationMenuTrigger>
             Claim
             <HandHelping className="h-3" />
@@ -112,14 +121,18 @@ export function NavMenu() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem className="border-black border-l border-b border-r rounded-br-md ">
-          <NavigationMenuLink
-            className={`${navigationMenuTriggerStyle()} font-semibold`}
-            asChild
-          >
-            <Link to={'/inventory'}>View All Items</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+        {showViewAllItemsLink && (
+          <Link to={'/inventory'}>
+            <NavigationMenuItem className="border-black border-b border-r rounded-br-md hidden sm:block">
+              <NavigationMenuLink
+                className={`${navigationMenuTriggerStyle()} font-semibold`}
+                asChild
+              >
+                <Link to={'/inventory'}>View All Items</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </Link>
+        )}
       </NavigationMenuList>
     </NavigationMenu>
   )

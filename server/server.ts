@@ -1,6 +1,8 @@
 import * as Path from 'node:path'
 import * as URL from 'node:url'
 import express from 'express'
+import dotenv from 'dotenv'
+
 import postRoutes from './routes/post.ts'
 import itemRoutes from './routes/item.ts'
 import tagRoutes from './routes/tag.ts'

@@ -12,7 +12,7 @@
     "dev:server": "tsx watch server/index.ts",
     "build": "run-s build:client build:server",
     "build:client": "vite build",
-    "build:server": "tsc --project tsconfig.server.json && esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
+    "build:server": "tsc && esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
     "test": "vitest",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",

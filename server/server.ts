@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'url'
 import { dirname, join, resolve } from 'path'
 import express from 'express'
+import fs from 'fs'
 import dotenv from 'dotenv'
 
 import postRoutes from './routes/post'
@@ -14,6 +15,11 @@ const server = express()
 
 server.use(express.static(join(__dirname, 'public')))
 server.use(express.json())
+
+const storageDir = '/app/storage'
+if (!fs.existsSync(storageDir)) {
+  fs.mkdirSync(storageDir, { recursive: true })
+}
 
 server.use('/api/v1/post', postRoutes)
 server.use('/api/v1/item', itemRoutes)

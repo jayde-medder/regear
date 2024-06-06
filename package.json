@@ -46,6 +46,7 @@
     "jwks-rsa": "^3.1.0",
     "knex": "^3.0.1",
     "lucide-react": "^0.366.0",
+    "pg": "^8.12.0",
     "sqlite3": "^5.1.6",
     "superagent": "7.1.1",
     "tailwind-merge": "^2.2.2",

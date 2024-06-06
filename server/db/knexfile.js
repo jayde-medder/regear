@@ -6,47 +6,47 @@ const __dirname = Path.dirname(__filename)
 
 export default {
   development: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
+    client: 'pg',
     connection: {
-      filename: Path.join(__dirname, 'dev.sqlite3'),
+      host: '127.0.0.1',
+      user: 'jayde',
+      password: 'Thix7cpip4E',
+      database: 'regear',
+      port: 5432,
     },
-    pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+    migrations: {
+      directory: Path.join(__dirname, 'migrations'),
+    },
+    seeds: {
+      directory: Path.join(__dirname, 'seeds'),
     },
   },
 
   test: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
+    client: 'pg',
     connection: {
-      filename: ':memory:',
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
     },
     migrations: {
       directory: Path.join(__dirname, 'migrations'),
     },
     seeds: {
       directory: Path.join(__dirname, 'seeds'),
-    },
-    pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 
   production: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
+    client: 'pg',
     connection: {
-      filename: '/app/storage/prod.sqlite3',
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
     },
     migrations: {
       directory: Path.join(__dirname, 'migrations'),
     },
     seeds: {
       directory: Path.join(__dirname, 'seeds'),
-    },
-    pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 }

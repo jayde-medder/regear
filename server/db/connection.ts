@@ -1,4 +1,4 @@
-import knexFile from './knexfile.js'
+import knexFile from './knexfile'
 import knex, { Knex } from 'knex'
 
 type Environment = 'production' | 'test' | 'development'

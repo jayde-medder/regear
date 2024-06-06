@@ -8,7 +8,7 @@ export function up(knex) {
     table.string('name')
     table.text('desc')
     table.date('date_added')
-    table.integer('weight', 7, 2)
+    table.float('weight')
     table.string('location')
     table.integer('owner_id').nullable()
     table.string('image_src')

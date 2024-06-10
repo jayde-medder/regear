@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { useMediaQuery } from 'usehooks-ts'
 import { Recycle, Images, Boxes, Info, Bell, Menu } from 'lucide-react'
 import { SidebarItems } from 'models/sidebarItems.ts'
 import { Button } from '@/components/ui/button'

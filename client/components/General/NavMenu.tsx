@@ -23,52 +23,54 @@ export function NavMenu() {
       <NavigationMenuList>
         <NavigationMenuItem className="border-black border-l border-b rounded-bl-md">
           <NavigationMenuTrigger>
-            Fix
-            <Wrench className="h-3" />
+            <p className="hidden sm:block">Fix</p>
+            <Wrench color="red" className="h-6 sm:h-3" />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
+              <li className="row-span-4">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <Wrench />
+                    <Wrench color="red" />
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Help us build a network of fixers!
                     </div>
+                    <p className="text-sm leading-tight text-muted-foreground">
+                      Actively participate in our community.
+                    </p>
                   </a>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/" title="Fix faulty gear">
-                View items in our library that are broken. You may donate
-                working items back to the library or keep what you fix.
+                View items in our library that are broken and volunteer to fix
+                them.
               </ListItem>
               <ListItem href="/" title="Express interest in workshops">
-                Learn to fix things. Select broken items from our inventory that
-                you would be interested in learning to fix.
+                Select broken items you&apos;re interested in learning to fix.
               </ListItem>
               <ListItem href="/" title="Take a workshop">
-                Put your hand up to show a group of interested people how to fix
-                something from the library.
+                Show community members how to fix something we have that is
+                broken.
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="border-black border-l border-b">
           <NavigationMenuTrigger>
-            Borrow
-            <HeartHandshake className="h-3" />
+            <p className="hidden sm:block">Borrow</p>
+            <HeartHandshake color="green" className="h-6 sm:h-3" />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
               <NavigationMenuLink asChild>
                 <a
                   className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                   href="/"
                 >
-                  <HeartHandshake />
+                  <HeartHandshake color="green" />
                   <div className="mb-2 mt-4 text-lg font-medium">
                     Borrow from the Hardware Library
                   </div>
@@ -89,8 +91,8 @@ export function NavMenu() {
           }`}
         >
           <NavigationMenuTrigger>
-            Claim
-            <HandHelping className="h-3" />
+            <p className="hidden sm:block">Claim</p>
+            <HandHelping color="purple" className="h-6 sm:h-3" />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -100,7 +102,7 @@ export function NavMenu() {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <HandHelping />
+                    <HandHelping color="purple" />
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Claim parts or working items
                     </div>
@@ -111,11 +113,10 @@ export function NavMenu() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/" title="Rehome Items">
-                Hardware that has been donated, fixed or repurposed by our team
-                or the wider community.
+              <ListItem href="/" title="Claim Items">
+                Take repurposed gear and give it a new life!
               </ListItem>
-              <ListItem href="/" title="Parts">
+              <ListItem href="/" title="Claim Parts">
                 Put our salvaged parts to use in your own projects.
               </ListItem>
             </ul>

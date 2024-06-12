@@ -21,8 +21,8 @@ export function NavMenu() {
   return (
     <>
       <NavigationMenu className="justify-start">
-        <NavigationMenuList>
-          <NavigationMenuItem className="border-black border-l border-b rounded-bl-md">
+        <NavigationMenuList className=" border-black border-b border-l border-r rounded-b-md">
+          <NavigationMenuItem className="border-black border-r">
             <NavigationMenuTrigger>
               <p className="hidden sm:block">Fix</p>
               <Wrench color="red" className="h-5 sm:h-3" />
@@ -59,7 +59,7 @@ export function NavMenu() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem className="border-black border-l border-b">
+          <NavigationMenuItem className="border-black border-r">
             <NavigationMenuTrigger>
               <p className="hidden sm:block">Borrow</p>
               <HeartHandshake color="green" className="h-5 sm:h-3" />
@@ -84,9 +84,7 @@ export function NavMenu() {
               </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem
-            className={`border-black border-l border-b border-r rounded-br-md`}
-          >
+          <NavigationMenuItem>
             <NavigationMenuTrigger>
               <p className="hidden sm:block">Claim</p>
               <HandHelping color="purple" className="h-5 sm:h-3" />
@@ -122,16 +120,19 @@ export function NavMenu() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <NavigationMenu className="justify-end flex-none h-8">
+      <NavigationMenu className="justify-end">
         <NavigationMenuList>
           {showViewAllItemsLink && (
             <Link to={'/inventory'}>
-              <NavigationMenuItem className=" border-black border-b border-r border-l rounded-bl-md rounded-br-md">
+              <NavigationMenuItem className="border-black border-b border-r border-l rounded-bl-md rounded-br-md">
                 <NavigationMenuLink
                   className={`${navigationMenuTriggerStyle()} font-semibold`}
                   asChild
                 >
-                  <Link to={'/inventory'}>View All Items</Link>
+                  <Link to={'/inventory'}>
+                    <p>View All</p>
+                    <p className="hidden sm:block">&nbsp;Items</p>
+                  </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </Link>

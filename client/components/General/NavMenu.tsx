@@ -19,123 +19,126 @@ export function NavMenu() {
   const showViewAllItemsLink = location.pathname !== '/inventory'
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem className="border-black border-l border-b rounded-bl-md">
-          <NavigationMenuTrigger>
-            <p className="hidden sm:block">Fix</p>
-            <Wrench color="red" className="h-6 sm:h-3" />
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-4">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <Wrench color="red" />
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      Help us build a network of fixers!
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Actively participate in our community.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/" title="Fix faulty gear">
-                View items in our library that are broken and volunteer to fix
-                them.
-              </ListItem>
-              <ListItem href="/" title="Express interest in workshops">
-                Select broken items you&apos;re interested in learning to fix.
-              </ListItem>
-              <ListItem href="/" title="Take a workshop">
-                Show community members how to fix something we have that is
-                broken.
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="border-black border-l border-b">
-          <NavigationMenuTrigger>
-            <p className="hidden sm:block">Borrow</p>
-            <HeartHandshake color="green" className="h-6 sm:h-3" />
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
-              <NavigationMenuLink asChild>
-                <a
-                  className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                  href="/"
-                >
-                  <HeartHandshake color="green" />
-                  <div className="mb-2 mt-4 text-lg font-medium">
-                    Borrow from the Hardware Library
-                  </div>
-                  <p className="text-sm leading-tight text-muted-foreground">
-                    View our inventory and send a request to borrow an item.
-                    We&apos;re flexible on how long you can borrow for.
-                  </p>
-                </a>
-              </NavigationMenuLink>
-            </div>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem
-          className={`border-black border-l border-b border-r  ${
-            showViewAllItemsLink
-              ? 'rounded-br-md sm:rounded-br-none'
-              : 'rounded-br-md sm:rounded-br-md'
-          }`}
-        >
-          <NavigationMenuTrigger>
-            <p className="hidden sm:block">Claim</p>
-            <HandHelping color="purple" className="h-6 sm:h-3" />
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
+    <>
+      <NavigationMenu className="justify-start">
+        <NavigationMenuList>
+          <NavigationMenuItem className="border-black border-l border-b rounded-bl-md">
+            <NavigationMenuTrigger>
+              <p className="hidden sm:block">Fix</p>
+              <Wrench color="red" className="h-5 sm:h-3" />
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <li className="row-span-4">
+                  <NavigationMenuLink asChild>
+                    <a
+                      className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      href="/"
+                    >
+                      <Wrench color="red" />
+                      <div className="mb-2 mt-4 text-lg font-medium">
+                        Help us build a network of fixers!
+                      </div>
+                      <p className="text-sm leading-tight text-muted-foreground">
+                        Actively participate in our community.
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                <ListItem href="/" title="Fix faulty gear">
+                  View items in our library that are broken and volunteer to fix
+                  them.
+                </ListItem>
+                <ListItem href="/" title="Express interest in workshops">
+                  Select broken items you&apos;re interested in learning to fix.
+                </ListItem>
+                <ListItem href="/" title="Take a workshop">
+                  Show community members how to fix something we have that is
+                  broken.
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem className="border-black border-l border-b">
+            <NavigationMenuTrigger>
+              <p className="hidden sm:block">Borrow</p>
+              <HeartHandshake color="green" className="h-5 sm:h-3" />
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px]">
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <HandHelping color="purple" />
+                    <HeartHandshake color="green" />
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      Claim parts or working items
+                      Borrow from the Hardware Library
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Browse items to take and keep at no cost to you. These
-                      items need new homes where they can be put to better use.
+                      View our inventory and send a request to borrow an item.
+                      We&apos;re flexible on how long you can borrow for.
                     </p>
                   </a>
                 </NavigationMenuLink>
-              </li>
-              <ListItem href="/" title="Claim Items">
-                Take repurposed gear and give it a new life!
-              </ListItem>
-              <ListItem href="/" title="Claim Parts">
-                Put our salvaged parts to use in your own projects.
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        {showViewAllItemsLink && (
-          <Link to={'/inventory'}>
-            <NavigationMenuItem className="border-black border-b border-r rounded-br-md hidden sm:block">
-              <NavigationMenuLink
-                className={`${navigationMenuTriggerStyle()} font-semibold`}
-                asChild
-              >
-                <Link to={'/inventory'}>View All Items</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </Link>
-        )}
-      </NavigationMenuList>
-    </NavigationMenu>
+              </div>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem
+            className={`border-black border-l border-b border-r rounded-br-md`}
+          >
+            <NavigationMenuTrigger>
+              <p className="hidden sm:block">Claim</p>
+              <HandHelping color="purple" className="h-5 sm:h-3" />
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <li className="row-span-3">
+                  <NavigationMenuLink asChild>
+                    <a
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      href="/"
+                    >
+                      <HandHelping color="purple" />
+                      <div className="mb-2 mt-4 text-lg font-medium">
+                        Claim parts or working items
+                      </div>
+                      <p className="text-sm leading-tight text-muted-foreground">
+                        Browse items to take and keep at no cost to you. These
+                        items need new homes where they can be put to better
+                        use.
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                <ListItem href="/" title="Claim Items">
+                  Take repurposed gear and give it a new life!
+                </ListItem>
+                <ListItem href="/" title="Claim Parts">
+                  Put our salvaged parts to use in your own projects.
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+      <NavigationMenu className="justify-end flex-none h-8">
+        <NavigationMenuList>
+          {showViewAllItemsLink && (
+            <Link to={'/inventory'}>
+              <NavigationMenuItem className=" border-black border-b border-r border-l rounded-bl-md rounded-br-md">
+                <NavigationMenuLink
+                  className={`${navigationMenuTriggerStyle()} font-semibold`}
+                  asChild
+                >
+                  <Link to={'/inventory'}>View All Items</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </Link>
+          )}
+        </NavigationMenuList>
+      </NavigationMenu>
+    </>
   )
 }
 

@@ -11,7 +11,15 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getAllTags, getParentTagPath } from '@/apis/apiTag'
 
-export function SearchCommand() {
+interface SearchCommandProps {
+  searchValue: string
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>
+}
+
+export function SearchCommand({
+  searchValue,
+  setSearchValue,
+}: SearchCommandProps) {
   const {
     data: tags,
     isLoading,
@@ -19,7 +27,6 @@ export function SearchCommand() {
   } = useQuery(['tag'], () => getAllTags())
 
   const [open, setOpen] = useState<boolean>(false)
-  const [searchValue, setsearchValue] = useState('')
   const [parentPaths, setParentPaths] = useState<{ [key: string]: string }>({})
   const commandRef = useRef<HTMLDivElement>(null)
 
@@ -46,7 +53,7 @@ export function SearchCommand() {
   }
 
   const handleValueChange = (value: string) => {
-    setsearchValue(value)
+    setSearchValue(value)
   }
 
   const isLeafNode = useCallback(

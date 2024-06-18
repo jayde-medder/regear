@@ -15,6 +15,7 @@ function Inventory() {
 
   //manages state for how inventory list is displayed
   const [itemOrder, setItemOrder] = useState<string>('date added')
+  const [searchValue, setSearchValue] = useState('')
   // sets the order of the item list
   const handleSelectChange = (value: string) => {
     setItemOrder(value)
@@ -37,10 +38,14 @@ function Inventory() {
       </>
     )
 
+  const filteredInventory = inventory.filter((item) =>
+    item.name.toLowerCase().includes(searchValue.toLowerCase())
+  )
+
   const sortedInventory =
     itemOrder === 'a-z'
-      ? inventory.slice().sort((a, b) => a.name.localeCompare(b.name))
-      : inventory
+      ? filteredInventory.slice().sort((a, b) => a.name.localeCompare(b.name))
+      : filteredInventory
           .slice()
           .sort(
             (a, b) =>
@@ -51,7 +56,10 @@ function Inventory() {
   return (
     <div className="relative">
       <div className="flex w-full p-1 gap-4 z-10 absolute">
-        <SearchCommand />
+        <SearchCommand
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
         <SortCombobox
           itemOrder={itemOrder}
           handleSelectChange={handleSelectChange}

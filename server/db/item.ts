@@ -14,6 +14,14 @@ export async function getItemById(id: number): Promise<Item> {
   return item
 }
 
+export async function getItemsByTag(tag: number): Promise<Item[]> {
+  const items = await db('item')
+    .join('item_tags', 'item.id', '=', 'item_tags.item')
+    .where('item_tags.tag', tag)
+    .select('item.*')
+  return items
+}
+
 export async function getLogsByItemId(item: number): Promise<Log[]> {
   const logs = await db('item_log').where({ item }).select('*')
   return logs

@@ -21,6 +21,15 @@ export async function getItemById(id: number): Promise<Item> {
   return res.body.item
 }
 
+//GET /api/v1/item/tag/:tagId
+export async function getItemsByTag(tag: number): Promise<Item[]> {
+  const res = await request.get(`${rootUrl}/item/tag/${tag}`)
+  if (res.status != 200) {
+    throw new Error('Failed to fetch items by tag')
+  }
+  return res.body.items as Item[]
+}
+
 /* //Post /api/v1/inventory/add
 export async function addNewInventoryItem(formData: NewItem) {
   try {

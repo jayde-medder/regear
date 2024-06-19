@@ -12,6 +12,7 @@ export const routes = createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="inventory" element={<Inventory />} />
+      <Route path="inventory/tag/:tag" element={<Inventory />} />
       {/* <Route path="admin/inventory" element={<InventoryManager />} />
       <Route path="admin/inventory/add" element={<AddInventoryForm />} /> */}
       <Route path="about" element={<About />} />

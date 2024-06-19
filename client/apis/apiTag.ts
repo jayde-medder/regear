@@ -5,7 +5,6 @@ const rootUrl = '/api/v1'
 
 // GET /api/v1/tag
 export async function getAllTags(): Promise<Tag[]> {
-  console.log('hi')
   const res = await request.get(`${rootUrl}/tag`)
   if (res.status !== 200) {
     throw new Error('Failed to fetch tags')

@@ -1,21 +1,29 @@
 import { useQuery } from '@tanstack/react-query'
-import { getItemList } from '../../apis/apiItem'
+import { getItemList, getItemsByTag } from '../../apis/apiItem'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import ItemListing from './ItemListing'
 import { SortCombobox } from './Sort By/SortCombobox'
 import { SearchCommand } from './Search/SearchCommand'
 
 function Inventory() {
+  const { tag } = useParams<{ tag?: string }>()
+  const [itemOrder, setItemOrder] = useState<string>('date added')
+  const [searchValue, setSearchValue] = useState('')
+
+  console.log(Number(tag))
+
   //gets array of items in the inventory with a reduced properties list
   const {
     data: inventory,
     isLoading,
     isError,
-  } = useQuery(['inventory'], () => getItemList())
+  } = useQuery(
+    ['inventory', tag],
+    () => (tag ? getItemsByTag(Number(tag)) : getItemList()),
+    { enabled: !!tag || !tag }
+  )
 
-  //manages state for how inventory list is displayed
-  const [itemOrder, setItemOrder] = useState<string>('date added')
-  const [searchValue, setSearchValue] = useState('')
   // sets the order of the item list
   const handleSelectChange = (value: string) => {
     setItemOrder(value)

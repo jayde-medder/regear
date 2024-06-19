@@ -10,6 +10,7 @@ import {
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getAllTags, getParentTagPath } from '@/apis/apiTag'
+import { Link } from 'react-router-dom'
 
 interface SearchCommandProps {
   searchValue: string
@@ -29,6 +30,7 @@ export function SearchCommand({
   const [open, setOpen] = useState<boolean>(false)
   const [parentPaths, setParentPaths] = useState<{ [key: string]: string }>({})
   const commandRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -54,6 +56,15 @@ export function SearchCommand({
 
   const handleValueChange = (value: string) => {
     setSearchValue(value)
+  }
+
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      setOpen(false)
+      if (inputRef.current) {
+        inputRef.current.blur() // Blur the input element
+      }
+    }
   }
 
   const isLeafNode = useCallback(
@@ -91,9 +102,11 @@ export function SearchCommand({
         }}
       >
         <CommandInput
+          ref={inputRef}
           placeholder="Search..."
           onValueChange={handleValueChange}
           onClick={handleInputClick}
+          onKeyDown={handleEnter}
         />
         {open && searchValue === '' && (
           <CommandList className="transition-all duration-1000">
@@ -110,14 +123,20 @@ export function SearchCommand({
                         .slice(0, 3)
                         .map((tag) => (
                           <CommandItem key={tag.id} value={tag.name}>
-                            <div>
-                              <h4 className="scroll-m-20 text-l font-semibold">
-                                {tag.name}
-                              </h4>
-                              <p className="text-sm text-muted-foreground">
-                                {parentPaths[tag.id.toString()]}
-                              </p>
-                            </div>
+                            <Link
+                              to={`/inventory/tag/${tag.id}`}
+                              onClick={() => setOpen(false)}
+                              className="w-full"
+                            >
+                              <div>
+                                <h4 className="scroll-m-20 text-l font-semibold">
+                                  {tag.name}
+                                </h4>
+                                <p className="text-sm text-muted-foreground">
+                                  {parentPaths[tag.id.toString()]}
+                                </p>
+                              </div>
+                            </Link>
                           </CommandItem>
                         ))}
                     </CommandGroup>
@@ -142,14 +161,20 @@ export function SearchCommand({
                         .filter((tag) => isLeafNode(tag.id))
                         .map((tag) => (
                           <CommandItem key={tag.id} value={tag.name}>
-                            <div>
-                              <h4 className="scroll-m-20 text-l font-semibold">
-                                {tag.name}
-                              </h4>
-                              <p className="text-sm text-muted-foreground">
-                                {parentPaths[tag.id.toString()]}
-                              </p>
-                            </div>
+                            <Link
+                              to={`/inventory/tag/${tag.id}`}
+                              onClick={() => setOpen(false)}
+                              className="w-full"
+                            >
+                              <div>
+                                <h4 className="scroll-m-20 text-l font-semibold">
+                                  {tag.name}
+                                </h4>
+                                <p className="text-sm text-muted-foreground">
+                                  {parentPaths[tag.id.toString()]}
+                                </p>
+                              </div>
+                            </Link>
                           </CommandItem>
                         ))}
                     </CommandGroup>

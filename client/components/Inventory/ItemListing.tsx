@@ -36,12 +36,12 @@ export default function ItemListing({ item }: props) {
       <CardFooter className="flex justify-between">
         {item.is_borrowable ? (
           <Button variant="secondary">
-            <HeartHandshake />
+            <HeartHandshake color="green" />
           </Button>
         ) : null}
         {item.is_claimable ? (
           <Button variant="secondary">
-            <HandHelping />
+            <HandHelping color="purple" />
           </Button>
         ) : null}
       </CardFooter>

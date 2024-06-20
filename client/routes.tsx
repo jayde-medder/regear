@@ -7,12 +7,15 @@ import Gallery from './pages/Gallery'
 import Community from './pages/Community'
 import FAQ from './pages/FAQ'
 import Contact from './pages/Contact'
+import ItemPage from './components/Inventory/ItemPage'
+
 export const routes = createRoutesFromElements(
   <>
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="inventory" element={<Inventory />} />
       <Route path="inventory/tag/:tag" element={<Inventory />} />
+      <Route path="inventory/:id" element={<ItemPage />} />
       {/* <Route path="admin/inventory" element={<InventoryManager />} />
       <Route path="admin/inventory/add" element={<AddInventoryForm />} /> */}
       <Route path="about" element={<About />} />

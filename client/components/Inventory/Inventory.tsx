@@ -11,8 +11,6 @@ function Inventory() {
   const [itemOrder, setItemOrder] = useState<string>('date added')
   const [searchValue, setSearchValue] = useState('')
 
-  console.log(Number(tag))
-
   //gets array of items in the inventory with a reduced properties list
   const {
     data: inventory,
@@ -75,7 +73,10 @@ function Inventory() {
       </div>
       <div className="flex flex-wrap z-0 absolute mt-14">
         {sortedInventory.map((item) => (
-          <div key={item.id} className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-1">
+          <div
+            key={item.id}
+            className="relative w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-1"
+          >
             <ItemListing key={item.id} item={item} />
           </div>
         ))}

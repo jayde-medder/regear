@@ -18,7 +18,7 @@ export async function getItemById(id: number): Promise<Item> {
   if (res.status !== 200) {
     throw new Error('Failed to fetch item')
   }
-  return res.body.item
+  return res.body.item as Item
 }
 
 //GET /api/v1/item/tag/:tagId

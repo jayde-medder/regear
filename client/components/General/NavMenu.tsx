@@ -120,7 +120,7 @@ export function NavMenu() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <NavigationMenu className="justify-end">
+      <NavigationMenu className="flex-none justify-end">
         <NavigationMenuList>
           {showViewAllItemsLink && (
             <Link to={'/inventory'}>

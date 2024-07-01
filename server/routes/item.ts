@@ -18,7 +18,7 @@ router.get('/:id', async (req, res) => {
     const item = await db.getItemById(id)
     res.json({ item })
   } catch (error) {
-    res.status(500).json({ message: 'Cannot get item' })
+    res.status(500).json({ message: 'Failed to fetch item' })
   }
 })
 

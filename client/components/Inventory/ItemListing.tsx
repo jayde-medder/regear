@@ -42,6 +42,11 @@ export default function ItemListing({ item }: props) {
             <HeartHandshake color="green" />
           </Button>
         ) : null}
+        {!item.is_working ? (
+          <Button variant="secondary">
+            <Wrench color="red" />
+          </Button>
+        ) : null}
         {item.is_claimable ? (
           <Button variant="secondary">
             <HandHelping color="purple" />

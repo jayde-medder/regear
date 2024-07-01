@@ -44,5 +44,25 @@ export async function seed(knex) {
       image_src: '/images/items/Riso.jpg',
       reported_by: 'Jade',
     },
+    {
+      id: 5,
+      item: 6,
+      datetime: '2024-03-26 15:30:50',
+      kind: 4,
+      short_desc: '',
+      desc: '',
+      image_src: '/images/items/Riso.jpg',
+      reported_by: 'Jade',
+    },
+    {
+      id: 6,
+      item: 2,
+      datetime: '2024-03-26 15:30:50',
+      kind: 3,
+      short_desc: '',
+      desc: '',
+      image_src: '/images/items/mx-500.jpeg',
+      reported_by: 'Julie',
+    },
   ])
 }

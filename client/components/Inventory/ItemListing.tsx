@@ -37,21 +37,15 @@ export default function ItemListing({ item }: props) {
         </div>
       </Link>
       <CardFooter className="flex justify-between">
-        {item.is_borrowable ? (
-          <Button variant="secondary">
-            <HeartHandshake color="green" />
-          </Button>
-        ) : null}
-        {!item.is_working ? (
-          <Button variant="secondary">
-            <Wrench color="red" />
-          </Button>
-        ) : null}
-        {item.is_claimable ? (
-          <Button variant="secondary">
-            <HandHelping color="purple" />
-          </Button>
-        ) : null}
+        <Button variant={item.is_borrowable ? 'secondary' : 'ghost'}>
+          <HeartHandshake color={item.is_borrowable ? 'green' : 'gray'} />
+        </Button>
+        <Button variant={`${item.is_working ? 'ghost' : 'secondary'}`}>
+          <Wrench color={item.is_working ? 'gray' : 'red'} />
+        </Button>
+        <Button variant={item.is_claimable ? 'secondary' : 'ghost'}>
+          <HandHelping color={item.is_claimable ? 'purple' : 'gray'} />
+        </Button>
       </CardFooter>
     </Card>
   )

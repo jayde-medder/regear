@@ -41,7 +41,7 @@ export function Sidebar() {
                 <Link key={index} to={link.href}>
                   <SidebarButton
                     variant={
-                      location.pathname === link.href ? 'secondary' : 'ghost'
+                      location.pathname === link.href ? 'secondary' : 'sidebar'
                     }
                     icon={link.icon}
                     className="w-full"

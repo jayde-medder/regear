@@ -15,8 +15,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from '@/components/ui/hover-card'
+
 import { Wrench, HandHelping, HeartHandshake } from 'lucide-react'
 import { Link } from 'react-router-dom'
+
+import { useState } from 'react'
 
 interface props {
   item: Item
@@ -60,9 +68,45 @@ export default function ItemListing({ item }: props) {
               <HeartHandshake color="gray" />
             </Button>
           )}
-          <Button variant={`${item.is_working ? 'ghost' : 'secondary'}`}>
-            <Wrench color={item.is_working ? 'gray' : 'red'} />
+        </TooltipProvider>
+
+        {item.is_working ? (
+          <Button variant="ghost">
+            <Wrench color="gray" />
           </Button>
+        ) : (
+          <HoverCard>
+            <HoverCardTrigger asChild>
+              <Button variant="secondary">
+                <Wrench color="red" />
+              </Button>
+            </HoverCardTrigger>
+            <HoverCardContent className="border bg-popover px-3 py-1.5 rounded-md w-full">
+              <div className="flex flex-col space-y-2">
+                <a
+                  href="#"
+                  className="hover:bg-accent text-sm text-center text-popover-foreground"
+                >
+                  Fix it yourself
+                </a>
+                <a
+                  href="#"
+                  className="hover:bg-accent text-sm text-center text-popover-foreground"
+                >
+                  Learn to fix
+                </a>
+                <a
+                  href="#"
+                  className="hover:bg-accent text-sm text-center text-popover-foreground"
+                >
+                  Take a workshop
+                </a>
+              </div>
+            </HoverCardContent>
+          </HoverCard>
+        )}
+
+        <TooltipProvider>
           {item.is_claimable ? (
             <Tooltip>
               <TooltipTrigger asChild>

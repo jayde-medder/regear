@@ -9,6 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 import { Wrench, HandHelping, HeartHandshake } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -37,15 +43,43 @@ export default function ItemListing({ item }: props) {
         </div>
       </Link>
       <CardFooter className="flex justify-between">
-        <Button variant={item.is_borrowable ? 'secondary' : 'ghost'}>
-          <HeartHandshake color={item.is_borrowable ? 'green' : 'gray'} />
-        </Button>
-        <Button variant={`${item.is_working ? 'ghost' : 'secondary'}`}>
-          <Wrench color={item.is_working ? 'gray' : 'red'} />
-        </Button>
-        <Button variant={item.is_claimable ? 'secondary' : 'ghost'}>
-          <HandHelping color={item.is_claimable ? 'purple' : 'gray'} />
-        </Button>
+        <TooltipProvider>
+          {item.is_borrowable ? (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="secondary">
+                  <HeartHandshake color="green" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Borrow</p>
+              </TooltipContent>
+            </Tooltip>
+          ) : (
+            <Button variant="ghost">
+              <HeartHandshake color="gray" />
+            </Button>
+          )}
+          <Button variant={`${item.is_working ? 'ghost' : 'secondary'}`}>
+            <Wrench color={item.is_working ? 'gray' : 'red'} />
+          </Button>
+          {item.is_claimable ? (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="secondary">
+                  <HandHelping color="purple" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Claim</p>
+              </TooltipContent>
+            </Tooltip>
+          ) : (
+            <Button variant="ghost">
+              <HeartHandshake color="gray" />
+            </Button>
+          )}
+        </TooltipProvider>
       </CardFooter>
     </Card>
   )

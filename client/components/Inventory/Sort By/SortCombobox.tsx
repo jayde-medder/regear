@@ -17,12 +17,12 @@ import {
 
 const orderOptions = [
   {
-    value: 'a-z',
-    label: 'A-Z',
-  },
-  {
     value: 'date added',
     label: 'Date Added',
+  },
+  {
+    value: 'a-z',
+    label: 'A-Z',
   },
 ]
 

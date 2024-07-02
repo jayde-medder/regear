@@ -23,7 +23,7 @@ export function NavMenu() {
       <NavigationMenu className="justify-start">
         <NavigationMenuList className=" border-black border-b border-l border-r rounded-b-md">
           <NavigationMenuItem className="border-black border-r">
-            <NavigationMenuTrigger>
+            <NavigationMenuTrigger className="sm:w-32">
               <h2 className="hidden sm:block">Borrow</h2>
               <HeartHandshake color="green" className="h-5 sm:h-3" />
             </NavigationMenuTrigger>
@@ -48,7 +48,7 @@ export function NavMenu() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem className="border-black border-r">
-            <NavigationMenuTrigger>
+            <NavigationMenuTrigger className="sm:w-32">
               <p className="hidden sm:block">Fix</p>
               <Wrench color="red" className="h-5 sm:h-3" />
             </NavigationMenuTrigger>
@@ -85,7 +85,7 @@ export function NavMenu() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>
+            <NavigationMenuTrigger className="sm:w-32">
               <p className="hidden sm:block">Claim</p>
               <HandHelping color="purple" className="h-5 sm:h-3" />
             </NavigationMenuTrigger>

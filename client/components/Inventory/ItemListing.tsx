@@ -24,8 +24,6 @@ import {
 import { Wrench, HandHelping, HeartHandshake } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-import { useState } from 'react'
-
 interface props {
   item: Item
 }
